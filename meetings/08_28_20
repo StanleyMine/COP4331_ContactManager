@@ -28,11 +28,7 @@ Frontend: JS/HTML/CSS - AJAX?
 
 Domain: skillseek.xyz
 Server Name: group1
-Admin username: admins
-Admin password: Group1_123!
 
-cPanel account Username: Group1DB
-cPanel account Password: Group1_123!
 Database: group1db_project1
 Field names:
 	Table 1 — Login:
