@@ -1,0 +1,61 @@
+Meeting time: Tuesdays at 7:00pm (flexible if need be; check-in meetings under an hour)
+Present: Tyler, Stanley, Yousef, Stacey, Alexis
+
+Roles:
+Alexis: API
+Yousef: Frontend and API support
+Stanley: Frontend
+Stacey: DB setup and co-API
+Tyler: PM/general support
+
+Theme: 
+Skill-based contact manager
+When a user registers, they can select certain “interests” or “skills”, which can then be used to sort entries within the app itself
+
+Hosting (CPANEL is a requirement):
+GoDaddy?
+Digital Ocean?
+Heroku?
+CPANEL is required, do we need VPS? Any other things we should look for (or avoid) when picking a hosting service?
+Others?
+
+Backend: PHP/MySQL
+Database schema (fields): 
+
+
+API: PHP
+Frontend: JS/HTML/CSS - AJAX?
+
+Domain: skillseek.xyz
+Server Name: group1
+Admin username: admins
+Admin password: Group1_123!
+
+cPanel account Username: Group1DB
+cPanel account Password: Group1_123!
+Database: group1db_project1
+Field names:
+	Table 1 — Login:
+	  Username: username  
+	  Password: password 
+    Id: id — Key
+  Table 2 — User_Info:
+    Id: id
+    User Id: userID — Key
+    First Name: firstName 
+    Last Name: lastName 
+    Main interest/skills: skills
+    Project Link (github, etc.): projectLink
+    Phone number: phoneNumber
+    Email: email
+    Date created: dateCreated
+
+
+
+Search box idea:
+First:
+Last:
+Skill:
+Search
+
+
