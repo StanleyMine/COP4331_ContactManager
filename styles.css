@@ -1,0 +1,45 @@
+body {
+    background-color: whitesmoke;
+  }
+* {
+  box-sizing: border-box;
+}
+  .container {
+    padding: 20px 0px 0px 0px;
+    height: 300px;
+    text-align: center;
+    display: flex; 
+    flex-direction: column;
+  }
+  .login-section {
+    margin: 4px 4px 4px 4px;
+  }
+  #login-form {
+    margin: auto;
+    display:block;
+    font-size: large;
+  }
+  #login-form input[type="submit"] {
+    margin: 16px;
+  }
+  #login-form label{
+    margin:auto;
+    display:block;
+  }
+  #createAccountLink {
+    margin-top: 10px; 
+  }
+
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: lightgray;
+  }
