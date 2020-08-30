@@ -23,6 +23,22 @@ async function login() {
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
 
+    if (!username || !password) {
+        // checking "", blank, null, 0, false
+        return;
+    }
+
+    // testing user and pass to stop invalid strings
+    const validUsernameRegex = /^[a-z0-9]+$/i;
+    if (!validUsernameRegex.test(username)) {
+        alert("not a valid username");
+        return;
+    }
+    if (!validUsernameRegex.test(password)) {
+        alert("not a valid password");
+        return;
+    }
+
     const reponse = await apiRequest("/api/login.php", { username, password });
 
     if (response.status >= 200 && response.status <= 299) {
