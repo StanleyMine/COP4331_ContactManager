@@ -10,24 +10,30 @@
 </head>
 
 <body>
-    <div class="container">
-        <form id="login-form" onsubmit="login()">
-            <!--Setting up log in text boxes-->
-            <div class="login-section">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="username" />
-            </div>
 
-            <div class="login-section">
-                <label for="password">Password:</label>
-                <input type="text" id="password" name="password" placeholder="password" />
-            </div>
+    <div class="centerdiv">
+        <div class="container">
+            <h1>Login</h1>
+            <form id="login-form" onsubmit="login()">
+                <!--Setting up log in text boxes-->
+                <div class="login-section">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="username" />
+                </div>
 
-            <input type="submit" value="Login">
-        </form>
+                <div class="login-section">
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" name="password" placeholder="password" />
+                </div>
 
-        <a id="createAccountLink" href="../smallProject/createAccount.html">Create an account here!</a><br>
+                <input type="submit" value="Login">
+            </form>
+
+            <a id="createAccountLink" href="../smallProject/createAccount.html">Create an account here!</a><br>
+        </div>
     </div>
+
+
 </body>
 
 </html>

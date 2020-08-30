@@ -9,10 +9,10 @@ async function apiRequest(endpoint, data) {
         });
 
         if (!response.ok) {
-            return { status: response.status, data: response.text() };
+            return { status: response.status, data: await response.text() };
         }
 
-        return { status: response.status, data: response.json() };
+        return { status: response.status, data: await response.json() };
     } catch (err) {
         return { status: 500, data: text };
     }
@@ -25,7 +25,7 @@ async function login() {
 
     const reponse = await apiRequest("/api/login.php", { username, password });
 
-    if (response.status >= 300 && response.status <= 299) {
+    if (response.status >= 200 && response.status <= 299) {
         // response.data stores normal data
     } else if (response.status >= 400 && response.status <= 499) {
         // response.data stores user error
@@ -34,8 +34,22 @@ async function login() {
     }
 }
 
-function createAccount() {
-    alert("creating account");
+async function createAccount() {
+    // need to confirm passwords and also check 
+    // if account already exists with username
+
+    var createuser, createpass, confpass;
+    createuser = document.getElementById("createuser").value;
+    createpass = document.getElementById("createpass").value;
+    confpass = document.getElementById("confpass").value;
+
+    if (confpass != createpass) {
+        //passwords don't match
+        alert("passwords do not match");
+    }
+
+    const reponse = await apiRequest("/api/createAccount.php", { createuser, createpass, confpass });
+
 }
 
 function createContact() {

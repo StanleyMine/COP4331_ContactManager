@@ -10,25 +10,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <form id="login-form">
-            <div class="login-section">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="username" />
-            </div>
+    <div class="centerdiv">
+        <div class="container">
+            <h1>Create Account</h1>
+            <form id="create-account" onsubmit="createAccount()">
+                <div class="login-section">
+                    <label for="createuser">Username:</label>
+                    <input type="text" id="createuser" name="createuser" placeholder="username" />
+                </div>
 
-            <div class="login-section">
-                <label for="password">Password:</label>
-                <input type="text" id="password" name="password" placeholder="password" />
-            </div>
+                <div class="login-section">
+                    <label for="createpass">Password:</label>
+                    <input type="text" id="createpass" name="createpass" placeholder="password" />
+                </div>
 
-            <div class="login-section">
-                <label for="confpass">Confirm Password:</label>
-                <input type="text" id="confpass" name="confpass" placeholder="password" />
-            </div>
-            <input type="submit" value="Create Account">
-        </form>
+                <div class="login-section">
+                    <label for="confpass">Confirm Password:</label>
+                    <input type="text" id="confpass" name="confpass" placeholder="password" />
+                </div>
+                <input type="submit" value="Create Account">
+            </form>
+        </div>
     </div>
+
 </body>
 
 </html>
