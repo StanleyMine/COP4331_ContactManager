@@ -28,14 +28,9 @@ async function login() {
         return;
     }
 
-    // testing user and pass to stop invalid strings
-    const validUsernameRegex = /^[a-z0-9]+$/i;
-    if (!validUsernameRegex.test(username)) {
+    // testing user to stop invalid strings
+    if (!checkValidName(username)) {
         alert("not a valid username");
-        return;
-    }
-    if (!validUsernameRegex.test(password)) {
-        alert("not a valid password");
         return;
     }
 
@@ -43,11 +38,20 @@ async function login() {
 
     if (response.status >= 200 && response.status <= 299) {
         // response.data stores normal data
+        // TODO : access contacts manager from here
     } else if (response.status >= 400 && response.status <= 499) {
         // response.data stores user error
     } else {
         // display something about the server having issues
     }
+}
+
+function checkValidName(myString) {
+    const validUsernameRegex = /^[a-z0-9]+$/i;
+    if (!validUsernameRegex.test(myString)) {
+        return false;
+    }
+    return true;
 }
 
 async function createAccount() {
@@ -65,6 +69,15 @@ async function createAccount() {
     }
 
     const reponse = await apiRequest("/api/createAccount.php", { createuser, createpass, confpass });
+
+    if (response.status >= 200 && response.status <= 299) {
+        // response.data stores normal data
+        // TODO : indicate success, and link back to login page
+    } else if (response.status >= 400 && response.status <= 499) {
+        // response.data stores user error
+    } else {
+        // display something about the server having issues
+    }
 
 }
 
