@@ -1,6 +1,6 @@
 body {
-    background-color: white;
-  }
+  background-color: white;
+}
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
@@ -15,7 +15,7 @@ body {
 .container {
   padding: 16px 32px;
   text-align: center;
-  display: inline-flex; 
+  display: inline-flex;
   border: 3px solid black;
   background-color: #dfdfdf;
   flex-direction: column;
@@ -30,34 +30,35 @@ body {
 #login-form input[type="submit"] {
   margin: 16px;
 }
-#login-form label{
-  margin:auto;
-  display:block;
+#login-form label {
+  margin: auto;
+  display: block;
 }
 #createAccountLink {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
- #create-account{
-  margin:auto;
-  display:block;
+#create-account {
+  margin: auto;
+  display: block;
   font-size: large;
 }
 #create-account input[type="submit"] {
   margin: 16px;
 }
-#create-account label{
-  display:block;
-  margin:auto;
-}
-#error{
+#create-account label {
   display: block;
-  color:red;
+  margin: auto;
+}
+#error {
+  display: block;
+  color: red;
 }
 table {
   border-collapse: collapse;
   width: 100%;
 }
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px 80px 8px 8px;
@@ -65,9 +66,9 @@ td, th {
 tr:nth-child(even) {
   background-color: lightblue;
 }
-#contact-table { 
+#contact-table {
   padding: 100px 0px 0px 0px;
-  background-color:white;
+  background-color: white;
 }
 #contact-table th {
   background-color: grey;
