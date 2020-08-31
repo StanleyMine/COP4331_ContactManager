@@ -1,3 +1,5 @@
+document.getElementById("login-form").addEventListener("submit", login);
+
 async function apiRequest(endpoint, data) {
     try {
         const response = await fetch(endpoint, {
@@ -14,35 +16,41 @@ async function apiRequest(endpoint, data) {
 
         return { status: response.status, data: await response.json() };
     } catch (err) {
-        return { status: 500, data: text };
+        return { status: 500, data: "An error has occured, please try again later." };
     }
 }
 
-async function login() {
-    var username, password;
-    username = document.getElementById("username").value;
-    password = document.getElementById("password").value;
+async function login(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-    if (!username || !password) {
+    if (!username) {
         // checking "", blank, null, 0, false
+        document.getElementById("error").innerText = "Please enter a valid username.";
+        return;
+    }
+    if (!password) {
+        // checking "", blank, null, 0, false
+        document.getElementById("error").innerText = "Please enter a valid password.";
         return;
     }
 
     // testing user to stop invalid strings
     if (!checkValidName(username)) {
-        alert("not a valid username");
+        document.getElementById("error").innerText = "Please enter a valid username.";
         return;
     }
 
-    const reponse = await apiRequest("/api/login.php", { username, password });
+    const response = await apiRequest("/api/login.php", { username, password });
 
     if (response.status >= 200 && response.status <= 299) {
         // response.data stores normal data
         // TODO : access contacts manager from here
     } else if (response.status >= 400 && response.status <= 499) {
-        // response.data stores user error
+        document.getElementById("error").innerText = "you fucked up";
     } else {
-        // display something about the server having issues
+        document.getElementById("error").innerText = "we fucked up but shh";
     }
 }
 

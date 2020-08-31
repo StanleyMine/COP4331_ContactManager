@@ -3,7 +3,7 @@
 <head>
 
     <!-- only using src='../smallProject/code.js' until website is active-->
-    <script type='text/javascript' src='../smallProject/code.js'></script>
+    <script type='text/javascript' src='../COP4331_ContactManager/code.js' defer></script>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -14,7 +14,7 @@
     <div class="centerdiv">
         <div class="container">
             <h1>Login</h1>
-            <form id="login-form" onsubmit="login()">
+            <form id="login-form">
                 <!--Setting up log in text boxes-->
                 <div class="login-section">
                     <label for="username">Username:</label>
@@ -23,13 +23,16 @@
 
                 <div class="login-section">
                     <label for="password">Password:</label>
-                    <input type="text" id="password" name="password" placeholder="password" />
+                    <input type="password" id="password" name="password" placeholder="password" />
                 </div>
 
                 <input type="submit" value="Login">
+
+                <span id="error"></span>
             </form>
 
-            <a id="createAccountLink" href="../smallProject/createAccount.html">Create an account here!</a><br>
+            <a id="createAccountLink" href="../COP4331_ContactManager/createAccount.html">Create an account
+                here!</a><br>
         </div>
     </div>
 

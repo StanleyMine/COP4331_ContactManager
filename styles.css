@@ -49,6 +49,10 @@ body {
   display:block;
   margin:auto;
 }
+#error{
+  display: block;
+  color:red;
+}
 table {
   border-collapse: collapse;
   width: 100%;
