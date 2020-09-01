@@ -30,10 +30,10 @@ async function login(event) {
   if (response.status >= 200 && response.status <= 299) {
     // response.data stores normal data
     // TODO : access contacts manager from here
+    // Redirect the user
   } else if (response.status >= 400 && response.status <= 499) {
-    document.getElementById("error").innerText = "Not in DB";
+    document.getElementById("error").innerText = response.data;
   } else {
-    document.getElementById("error").innerText =
-      "Server Error. Please try later.";
+    document.getElementById("error").innerText = response.data;
   }
 }
