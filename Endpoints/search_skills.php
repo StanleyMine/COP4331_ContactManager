@@ -21,7 +21,8 @@
 	} 
 	else
 	{
-		$sql = "SELECT id,firstName,lastName,skills,email FROM Login where skills='" . $inData["Skill"] . "'";
+		// I think he would like partial finds too, so this wouldn't work. Will review class for this one
+		$sql = "SELECT UserID,firstName,lastName,skills FROM User_Info where skills='" . $inData["Skill"] . "'";
 		$result = $conn->query($sql);
 		$count = ($result->num_rows)-1;
 		if ($result->num_rows > 0)
@@ -31,10 +32,9 @@
 				$row = $result->fetch_assoc();
 				$firstName = $row["firstName"];
 				$lastName = $row["lastName"];
-				$id = $row["ID"];
+				$id = $row["UserID"];
 				$skill = $row["skills"];
-				$email = $row["email"];
-				$contacts[$count-1] = array("firstName"=>$firstName, "lastname"=>$lastName, "id"=>$id, "email"=>$email, "skill"=>$skill);
+				$contacts[$count-1] = array("firstName"=>$firstName, "lastname"=>$lastName, "id"=>$id, "skill"=>$skill);
 				$count -= 1;
 			}
 			returnWithInfo($contacts );
@@ -59,7 +59,7 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"", "skill":"", "email":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"firstName":"","lastName":"", "skill":"", "error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
