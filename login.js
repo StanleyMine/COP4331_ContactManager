@@ -27,12 +27,14 @@ async function login(event) {
 
   const response = await apiRequest("/api/login.php", { username, password });
 
-  if (response.status >= 200 && response.status <= 299) {
+  if (response.status == 200) {
+    if (response.data.error) {
+      document.getElementById("error").innerText = response.data.error;
+      return;
+    }
     // response.data stores normal data
     // TODO : access contacts manager from here
     // Redirect the user
-  } else if (response.status >= 400 && response.status <= 499) {
-    document.getElementById("error").innerText = response.data;
   } else {
     document.getElementById("error").innerText = response.data;
   }

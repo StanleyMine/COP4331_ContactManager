@@ -24,10 +24,12 @@ async function createAccount(event) {
     createpass,
   });
 
-  if (response.status >= 200 && response.status <= 299) {
+  if (response.status == 200) {
+    if (response.data.error) {
+      document.getElementById("createError").innerText = response.data.error;
+      return;
+    }
     // response.data stores normal data
-    document.getElementById("createError").innerText = response.data;
-  } else if (response.status >= 400 && response.status <= 499) {
     document.getElementById("createError").innerText = response.data;
   } else {
     document.getElementById("createError").innerText = response.data;
