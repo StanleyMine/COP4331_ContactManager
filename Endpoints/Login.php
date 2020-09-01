@@ -24,7 +24,7 @@
 			$row = $result->fetch_assoc();
 			$firstName = $row["firstName"];
 			$lastName = $row["lastName"];
-			$id = $row["ID"];
+			$id = $row["id"];
 			
 			returnWithInfo($firstName, $lastName, $id );
 		}
