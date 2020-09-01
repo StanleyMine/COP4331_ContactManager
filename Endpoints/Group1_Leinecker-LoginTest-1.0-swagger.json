@@ -1,0 +1,55 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Login",
+    "description" : ""
+  },
+  "definitions" : {
+    "Login" : {
+      "type" : "object",
+      "required" : [ "login", "password" ],
+      "properties" : {
+        "login" : {
+          "type" : "string",
+          "example" : "Fred"
+        },
+        "password" : {
+          "type" : "string",
+          "example" : "password_is_the_key"
+        }
+      }
+    }
+  },
+  "paths" : {
+    "/Login" : {
+      "post" : {
+        "tags" : [ "Users" ],
+        "summary" : "Logs in to Contact Manager",
+        "responses" : {
+          "200" : {
+            "description" : "Ol Korrect"
+          },
+          "400" : {
+            "description" : "Page Not Found"
+          }
+        },
+        "operationId" : "doLogin",
+        "description" : "Logs in to Contact Manager",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ]
+      },
+      "parameters" : [ {
+        "in" : "body",
+        "name" : "loginItem",
+        "description" : "Login",
+        "schema" : {
+          "$ref" : "#/definitions/Login"
+        }
+      } ]
+    }
+  },
+  "schemes" : [ "https", "http" ],
+  "basePath" : "/Group1_Leinecker/LoginTest/1.0",
+  "host" : "virtserver.swaggerhub.com"
+}
