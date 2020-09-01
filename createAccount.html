@@ -1,44 +1,55 @@
 <!DOCTYPE html>
-
-<head>
-
+<html>
+  <head>
     <!-- only using src='../smallProject/code.js' until website is active-->
-    <script type='text/javascript' src='../smallProject/code.js'></script>
+    <script type="text/javascript" src="code.js" defer></script>
+    <script type="text/javascript" src="createAccount.js" defer></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="centerdiv">
-        <div class="container">
-            <h1>Create Account</h1>
-            <form id="create-account" onsubmit="createAccount()">
-                <div class="login-section">
-                    <label for="createuser">Username:</label>
-                    <input type="text" id="createuser" name="createuser" placeholder="username" />
-                </div>
+      <div class="container">
+        <h1>Create Account</h1>
+        <form id="create-account">
+          <div class="login-section">
+            <label for="createuser">Username:</label>
+            <input
+              type="text"
+              id="createuser"
+              name="createuser"
+              placeholder="username"
+            />
+          </div>
 
-                <div class="login-section">
-                    <label for="createpass">Password:</label>
-                    <input type="text" id="createpass" name="createpass" placeholder="password" />
-                </div>
+          <div class="login-section">
+            <label for="createpass">Password:</label>
+            <input
+              type="password"
+              id="createpass"
+              name="createpass"
+              placeholder="password"
+            />
+          </div>
 
-                <div class="login-section">
-                    <label for="confpass">Confirm Password:</label>
-                    <input type="text" id="confpass" name="confpass" placeholder="password" />
-                </div>
-                <input type="submit" value="Create Account">
+          <div class="login-section">
+            <label for="confpass">Confirm Password:</label>
+            <input
+              type="password"
+              id="confpass"
+              name="confpass"
+              placeholder="password"
+            />
+          </div>
+          <input type="submit" value="Create Account" />
 
-                <span id="createError"></span>
-            </form>
-            <a
-          id="backToLogin"
-          href="../COP4331_ContactManager/index.html"
-          >Click here to return to login!</a><br />
-        </div>
+          <span id="createError"></span>
+        </form>
+        <a id="backToLogin" href="../COP4331_ContactManager/index.html"
+          >Click here to return to login!</a
+        ><br />
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

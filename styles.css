@@ -60,6 +60,9 @@ a:active {
   display: block;
   font-size: large;
 }
+#backToLogin {
+  margin-top: 24px;
+}
 #create-account input[type="submit"] {
   margin: 16px;
   padding: 11px 16px;
@@ -78,6 +81,10 @@ a:active {
   margin: auto;
 }
 #error {
+  display: block;
+  color: red;
+}
+#createError {
   display: block;
   color: red;
 }
