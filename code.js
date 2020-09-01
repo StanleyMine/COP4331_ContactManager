@@ -70,32 +70,27 @@ function checkValidName(myString) {
 }
 
 async function createAccount() {
-  // need to confirm passwords and also check
-  // if account already exists with username
-
-  var createuser, createpass, confpass;
-  createuser = document.getElementById("createuser").value;
-  createpass = document.getElementById("createpass").value;
-  confpass = document.getElementById("confpass").value;
+  const createuser = document.getElementById("createuser").value;
+  const createpass = document.getElementById("createpass").value;
+  const confpass = document.getElementById("confpass").value;
 
   if (confpass != createpass) {
     //passwords don't match
     alert("passwords do not match");
   }
 
-  const reponse = await apiRequest("/api/createAccount.php", {
+  const response = await apiRequest("/api/createAccount.php", {
     createuser,
-    createpass,
-    confpass,
+    createpass
   });
 
   if (response.status >= 200 && response.status <= 299) {
     // response.data stores normal data
-    // TODO : indicate success, and link back to login page
+    document.getElementById("createError").innerText = "Success!";
   } else if (response.status >= 400 && response.status <= 499) {
-    // response.data stores user error
+    document.getElementById("createError").innerText = "Sorry, this username is not available. Please try again.";
   } else {
-    // display something about the server having issues
+    document.getElementById("error").innerText = "Server Error. Please try later.";
   }
 }
 
