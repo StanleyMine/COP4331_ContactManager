@@ -26,12 +26,10 @@ async function createAccount(event) {
 
   if (response.status >= 200 && response.status <= 299) {
     // response.data stores normal data
-    document.getElementById("createError").innerText = "Success!";
+    document.getElementById("createError").innerText = response.data;
   } else if (response.status >= 400 && response.status <= 499) {
-    document.getElementById("createError").innerText =
-      "Sorry, this username is not available. Please try again.";
+    document.getElementById("createError").innerText = response.data;
   } else {
-    document.getElementById("createError").innerText =
-      "Server Error. Please try later.";
+    document.getElementById("createError").innerText = response.data;
   }
 }
