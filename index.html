@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- only using src='../smallProject/code.js' until website is active-->
+    <script type="text/javascript" src="code.js" defer></script>
+    <script type="text/javascript" src="login.js" defer></script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="centerdiv">
+      <div class="container">
+        <h1>Login</h1>
+        <form id="login-form">
+          <!--Setting up log in text boxes-->
+          <div class="login-section">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="username"
+            />
+          </div>
+
+          <div class="login-section">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
+          </div>
+
+          <input type="submit" value="Login" />
+
+          <span id="error"></span>
+        </form>
+
+        <a
+          id="createAccountLink"
+          href="../COP4331_ContactManager/createAccount.html"
+          >Create an account here!</a
+        ><br />
+      </div>
+    </div>
+  </body>
+</html>

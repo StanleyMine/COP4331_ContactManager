@@ -1,0 +1,110 @@
+body {
+  background-color: var(--primary-color);
+}
+* {
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+  --primary-color: rgb(57, 160, 194);
+}
+a {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+.centerdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.container {
+  padding: 56px;
+  text-align: center;
+  display: inline-flex;
+  background-color: white;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  flex-direction: column;
+}
+.login-section {
+  margin: 16px;
+}
+#login-form {
+  margin: auto;
+  font-size: large;
+}
+#login-form input[type="submit"] {
+  margin: 16px;
+  padding: 11px 16px;
+  font-size: 14px;
+  min-width: 88px;
+  min-height: 36px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+}
+#login-form label {
+  margin: auto;
+  display: block;
+}
+#createAccountLink {
+  margin-top: 24px;
+}
+#create-account {
+  margin: auto;
+  display: block;
+  font-size: large;
+}
+#backToLogin {
+  margin-top: 24px;
+}
+#create-account input[type="submit"] {
+  margin: 16px;
+  padding: 11px 16px;
+  font-size: 14px;
+  min-width: 88px;
+  min-height: 36px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+}
+#create-account label {
+  display: block;
+  margin: auto;
+}
+#error {
+  display: block;
+  color: red;
+}
+#createError {
+  display: block;
+  color: red;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px 80px 8px 8px;
+}
+tr:nth-child(even) {
+  background-color: var(--primary-color);
+}
+#contact-table {
+  padding: 100px 0px 0px 0px;
+  background-color: white;
+}
+#contact-table th {
+  background-color: grey;
+}
