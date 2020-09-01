@@ -3,7 +3,7 @@
 
 	$servername = "localhost";
 	$admin_user = "admins";
-	$admin_pass = "Group1_123!"
+	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
 	$id = 0;
