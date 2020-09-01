@@ -27,14 +27,14 @@
 		$count = ($result->num_rows)-1;
 		if ($result->num_rows > 0)
 		{
-			while ($count > 0)
+			while ($count >= 0)
 			{
 				$row = $result->fetch_assoc();
 				$firstName = $row["firstName"];
 				$lastName = $row["lastName"];
 				$id = $row["UserID"];
 				$skill = $row["skills"];
-				$contacts[$count-1] = array("firstName"=>$firstName, "lastname"=>$lastName, "id"=>$id, "skill"=>$skill);
+				$contacts[$count] = array("firstName"=>$firstName, "lastname"=>$lastName, "id"=>$id, "skill"=>$skill);
 				$count -= 1;
 			}
 			returnWithInfo($contacts );
@@ -67,7 +67,7 @@
 	{
 		// Not confident if this will work with a multidimensional
 		// array like $contacts
-		$retValue = json_encode($contacts);
+		$retValue = json_encode( $contacts );
 		sendResultInfoAsJson( $retValue );
 	}
 	
