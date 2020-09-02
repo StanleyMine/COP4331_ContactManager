@@ -31,9 +31,29 @@ a:active {
 .login-section {
   margin: 16px;
 }
+.border-draw {
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#search-form input[type="submit"] {
+  font-size: 14px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  color: white;
+  background-color: var(--primary-color);
+}
 #login-form {
   margin: auto;
   font-size: large;
+}
+#search-form {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  display: inline-flex;
+  align-content: flex-start;
 }
 #login-form input[type="submit"] {
   margin: 16px;
@@ -98,8 +118,8 @@ th {
   text-align: left;
   padding: 8px 80px 8px 8px;
 }
-tr:nth-child(even) {
-  background-color: var(--primary-color);
+tr:nth-child(odd) {
+  background-color: rgba(103, 103, 235, 0.527);
 }
 #contact-table {
   padding: 100px 0px 0px 0px;

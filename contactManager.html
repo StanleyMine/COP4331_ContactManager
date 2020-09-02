@@ -1,61 +1,84 @@
 <!DOCTYPE html>
-
-<head>
-
+<html>
+  <head>
     <!-- only using src='../smallProject/code.js' until website is active-->
-    <script type='text/javascript' src='../smallProject/code.js'></script>
+    <script type="text/javascript" src="code.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- TODO : add a dyanimc table? -->
-    <div class="container" id="contact-table">
+    <div class="centerdiv">
+      <div class="container" id="contact-table">
+        <form id="search-form">
+          <div class="border-draw" id="name-input">
+            <label for="name-search">Name:</label>
+            <input
+              type="text"
+              id="name-search"
+              name="name-search"
+              placeholder="name"
+            />
+          </div>
+          <div class="border-draw" id="skill-input">
+            <label for="skill-search">Skill:</label>
+            <input
+              type="text"
+              id="skill-search"
+              name="skill-search"
+              placeholder="skill"
+            />
+          </div>
+          <div class="border-draw" id="search-button">
+            <input type="submit" value="Search" />
+          </div>
+        </form>
+
         <!--  style="visibility: hidden;" -->
         <table>
-            <tr>
-                <th>First</th>
-                <th>Last</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Skill</th>
-                <th>Date Added</th>
-            </tr>
-            <tr>
-                <td>jane</td>
-                <td>doe</td>
-                <td>myEmail@gmail.com</td>
-                <td>123-456-7890</td>
-                <td>cpp</td>
-                <td>1/1/1111</td>
-            </tr>
-            <tr>
-                <td>john</td>
-                <td>doe</td>
-                <td>myEmail@gmail.com</td>
-                <td>123-456-7890</td>
-                <td>java</td>
-                <td>1/1/1111</td>
-            </tr>
-            <tr>
-                <td>stan</td>
-                <td>man</td>
-                <td>myEmail@gmail.com</td>
-                <td>123-456-7890</td>
-                <td>c</td>
-                <td>1/1/1111</td>
-            </tr>
-            <tr>
-                <td>Island</td>
-                <td>lonely</td>
-                <td>myEmail@gmail.com</td>
-                <td>123-456-7890</td>
-                <td>d</td>
-                <td>1/1/1111</td>
-            </tr>
+          <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Skill</th>
+            <th>Date Added</th>
+          </tr>
+          <tr>
+            <td>jane</td>
+            <td>doe</td>
+            <td>myEmail@gmail.com</td>
+            <td>123-456-7890</td>
+            <td>cpp</td>
+            <td>1/1/1111</td>
+          </tr>
+          <tr>
+            <td>john</td>
+            <td>doe</td>
+            <td>myEmail@gmail.com</td>
+            <td>123-456-7890</td>
+            <td>java</td>
+            <td>1/1/1111</td>
+          </tr>
+          <tr>
+            <td>stan</td>
+            <td>man</td>
+            <td>myEmail@gmail.com</td>
+            <td>123-456-7890</td>
+            <td>c</td>
+            <td>1/1/1111</td>
+          </tr>
+          <tr>
+            <td>Island</td>
+            <td>lonely</td>
+            <td>myEmail@gmail.com</td>
+            <td>123-456-7890</td>
+            <td>d</td>
+            <td>1/1/1111</td>
+          </tr>
         </table>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
