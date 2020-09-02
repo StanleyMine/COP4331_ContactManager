@@ -11,27 +11,35 @@
     <!-- TODO : add a dyanimc table? -->
     <div class="centerdiv">
       <div class="container" id="contact-table">
+        <h1>Contact Manager</h1>
         <form id="search-form">
           <div class="border-draw" id="name-input">
-            <label for="name-search">Name:</label>
-            <input
-              type="text"
-              id="name-search"
-              name="name-search"
-              placeholder="name"
-            />
+            <div class="labeled-search-input">
+              <label for="name-search">Name:</label>
+              <input
+                type="text"
+                id="name-search"
+                name="name-search"
+                placeholder="name"
+              />
+            </div>
           </div>
           <div class="border-draw" id="skill-input">
-            <label for="skill-search">Skill:</label>
-            <input
-              type="text"
-              id="skill-search"
-              name="skill-search"
-              placeholder="skill"
-            />
+            <div class="labeled-search-input">
+              <label for="skill-search">Skill: </label>
+              <input
+                type="text"
+                id="skill-search"
+                name="skill-search"
+                placeholder="skill"
+              />
+            </div>
           </div>
           <div class="border-draw" id="search-button">
             <input type="submit" value="Search" />
+          </div>
+          <div class="border-draw" id="add-account-button">
+            <button type="button">Add Contact</button>
           </div>
         </form>
 
@@ -44,6 +52,7 @@
             <th>Phone Number</th>
             <th>Skill</th>
             <th>Date Added</th>
+            <th>-</th>
           </tr>
           <tr>
             <td>jane</td>
@@ -52,6 +61,7 @@
             <td>123-456-7890</td>
             <td>cpp</td>
             <td>1/1/1111</td>
+            <td>🗑️</td>
           </tr>
           <tr>
             <td>john</td>
@@ -60,6 +70,7 @@
             <td>123-456-7890</td>
             <td>java</td>
             <td>1/1/1111</td>
+            <td>🗑️</td>
           </tr>
           <tr>
             <td>stan</td>
@@ -68,6 +79,7 @@
             <td>123-456-7890</td>
             <td>c</td>
             <td>1/1/1111</td>
+            <td>🗑️</td>
           </tr>
           <tr>
             <td>Island</td>
@@ -76,6 +88,43 @@
             <td>123-456-7890</td>
             <td>d</td>
             <td>1/1/1111</td>
+            <td>🗑️</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>🗑️</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>🗑️</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>🗑️</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>🗑️</td>
           </tr>
         </table>
       </div>
