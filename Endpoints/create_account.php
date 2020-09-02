@@ -3,15 +3,15 @@
 	$inData = getRequestInfo();
 
 	$servername = "localhost";
-	$admin_user = "admins";
-	$admin_pass = "Group1_123!"
+	$user = "admins";
+	$pass = "Group1_123!"
 	$thedb = "group1db_project1";
 
 	$userID = 0;
 	$firstName = "";
 	$lastName = "";
 
-	$conn = new mysqli($servername, $admin_user, $admin_pass, $thedb);
+	$conn = new mysqli($servername, $user, $pass, $thedb);
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_erro );
@@ -25,38 +25,27 @@
 		{
 			returnWithError( "This username is unavailable");
 		}
+		// Get the current date
+		$mydate=getdate(date("U"));
+		$dateCreated = "$mydate[month] $mydate[mday], $mydate[year]";
 
-		// First, insert into the Login table.
-		$sql = "INSERT into Login (username, password, firstName, lastName) VALUES ('" + $inData["Username"] + "', '" + $inData["Password"] + "', '" + $inData["firstName"] + "', '" + $inData["lastName"] + "')";
+		// insert into the Login table.
+		$sql = "INSERT into Login (username, password, firstName, lastName, dateCreated) VALUES ('" + $inData["Username"] + "', '" + $inData["Password"] + "', '" + $inData["firstName"] + "', '" + $inData["lastName"] + "', '" + $dateCreated + "')";
 		$result = $conn->query($sql);
 		if ($result)
 		{
+
 			$sql = "SELECT id FROM Login where username='" + $inData["Username"] + "'";
 			$result = $conn->query($sql);
 			$row = $result->fetch_assoc();
-
-			// Saving these for a (hopefully) successful return
+		
 			$firstName = $row["firstName"];
 			$lastName = $row["lastName"];
+			$userID = $row["id"];
 
-			// Grabbing the id from Login to use as UserID in User_Info
-			$userID = $row[id];
-
-			// Get the current date
-			$mydate=getdate(date("U"));
-			$dateCreated = "$mydate[month] $mydate[mday], $mydate[year]";
-
-			$sql = "INSERT into User_Info (userID, firstName, lastName, projectLink, phoneNumber, email, dateCreated) VALUES ('" + $userID + "', '" + $inData["firstName"] + "', '" + $inData["lastName"] + "', '" + $inData["projectLink"] + "', '" + $inData["phoneNumber"] + "', '" + $inData["email"] + "', '" + "' $dateCreated "'")"
-			$result = $conn->query($sql);
-			// Check to make sure the user info entered successfully
-			if($result)
-			{
-				echo "Account successfully created";
-				returnWithInfo($firstName, $lastName, $id );
-			}
-			else {
-				returnWithError("There was a problem creating the account");
-			}
+			echo "Account successfully created";
+			returnWithInfo($firstName, $lastName, $id );
+			
 		}
 		else
 		{
