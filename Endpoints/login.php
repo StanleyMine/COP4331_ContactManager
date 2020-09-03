@@ -3,7 +3,7 @@
 	$inData = getRequestInfo();
 
 	$servername = "localhost";
-	$admin_user = "admins";
+	$admin_user = "group1db";
 	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
