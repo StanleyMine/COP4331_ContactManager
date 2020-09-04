@@ -3,11 +3,10 @@
 	$inData = getRequestInfo();
 
 	$servername = "localhost";
-	$user = "admins";
+	$user = "group1db";
 	$pass = "Group1_123!"
 	$thedb = "group1db_project1";
 
-	$userID = 0;
 	$firstName = "";
 	$lastName = "";
 
@@ -19,7 +18,7 @@
 	else
 	{
 		// Checks whether the username is already in the database.
-		$sql = "SELECT id,firstName,lastName FROM Login where username='" . $inData["Username"] . "'";
+		$sql = "SELECT id FROM Login where username='" . $inData["Username"] . "'";
 		$result = $conn->query($sql);
 		if($result->num_rows > 0)
 		{
@@ -35,16 +34,15 @@
 		if ($result)
 		{
 
-			$sql = "SELECT id FROM Login where username='" + $inData["Username"] + "'";
+			$sql = "SELECT firstName, lastName FROM Login where username='" + $inData["Username"] + "'";
 			$result = $conn->query($sql);
 			$row = $result->fetch_assoc();
 		
 			$firstName = $row["firstName"];
 			$lastName = $row["lastName"];
-			$userID = $row["id"];
 
 			echo "Account successfully created";
-			returnWithInfo($firstName, $lastName, $id );
+			returnWithInfo($firstName, $lastName );
 			
 		}
 		else
@@ -67,13 +65,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $firstName, $lastName )
 	{
-		$retValue = '{"id":' . $userID . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
