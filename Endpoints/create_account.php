@@ -4,7 +4,7 @@
 
 	$servername = "localhost";
 	$user = "group1db";
-	$pass = "Group1_123!"
+	$pass = "Group1_123!";
 	$thedb = "group1db_project1";
 
 	$firstName = "";
@@ -24,32 +24,35 @@
 		{
 			returnWithError( "This username is unavailable");
 		}
-		// Get the current date
-		$mydate=getdate(date("U"));
-		$dateCreated = "$mydate[month] $mydate[mday], $mydate[year]";
-
-		// insert into the Login table.
-		$sql = "INSERT into Login (username, password, firstName, lastName, dateCreated) VALUES ('" + $inData["Username"] + "', '" + $inData["Password"] + "', '" + $inData["firstName"] + "', '" + $inData["lastName"] + "', '" + $dateCreated + "')";
-		$result = $conn->query($sql);
-		if ($result)
-		{
-
-			$sql = "SELECT firstName, lastName FROM Login where username='" + $inData["Username"] + "'";
-			$result = $conn->query($sql);
-			$row = $result->fetch_assoc();
-		
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-
-			echo "Account successfully created";
-			returnWithInfo($firstName, $lastName );
-			
-		}
 		else
 		{
-			returnWithError( "There was a problem creating the account" );
+			// Get the current date
+			$mydate=getdate(date("U"));
+			$dateCreated = "$mydate[month] $mydate[mday], $mydate[year]";
+
+			// insert into the Login table.
+			$sql = "INSERT into Login (username, password, firstName, lastName, dateCreated) VALUES ('" . $inData["Username"] . "', '" . $inData["Password"] . "', '" . $inData["firstName"] . "', '" . $inData["lastName"] . "', '" . $dateCreated . "')";
+			$result = $conn->query($sql);
+		
+			if ($result)
+			{
+
+				$sql = "SELECT firstName, lastName FROM Login where username='" . $inData["Username"] . "'";
+				$result = $conn->query($sql);
+				$row = $result->fetch_assoc();
+			
+				$firstName = $row["firstName"];
+				$lastName = $row["lastName"];
+
+				returnWithInfo($firstName, $lastName, "Account successfully created!");
+				
+			}
+			else
+			{
+				returnWithError( "There was a problem creating the account" );
+			}
 		}
-		$conn->close();
+	$conn->close();
 	}
 
 	function getRequestInfo()
@@ -69,9 +72,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName )
+	function returnWithInfo( $firstName, $lastName, $message )
 	{
-		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","message":"' . $message . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
