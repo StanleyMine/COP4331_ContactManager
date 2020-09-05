@@ -75,7 +75,7 @@
 	
 	function returnWithInfo( $contacts )
 	{
-		$retValue = '{"results":"' . $contacts . '","error":""}';
+		$retValue = '{"results":' . $contacts . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
