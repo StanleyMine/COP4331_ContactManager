@@ -1,18 +1,19 @@
-?php
+<?php
 
 	$inData = getRequestInfo();
 
 	$servername = "localhost";
-	$admin_user = "admins";
-	$admin_pass = "Group1_123!"
+	$admin_user = "group1db";
+	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
-	$id = 0;
 	$firstName = "";
 	$lastName = "";
-	$skill = "";
+	$skills = "";
 	$email = "";
-	$contacts = array();
+	$phoneNumber = "";
+	$projectLink = "";
+	$contacts = "";
 
 	$conn = new mysqli($servername, $admin_user, $admin_pass, $thedb);
 	if ($conn->connect_error) 
@@ -21,27 +22,34 @@
 	} 
 	else
 	{
-		// I think he would like partial finds too, so this wouldn't work. Will review class for this one
-		$sql = "SELECT UserID,firstName,lastName,skills FROM User_Info where skills='" . $inData["Skill"] . "'";
+		$sql = "SELECT firstName,lastName,skills,projectLink,email,phoneNumber FROM User_Info where skills LIKE '%" . $inData["Skill"] . "%' and userID=" . $inData[id];
 		$result = $conn->query($sql);
-		$count = ($result->num_rows)-1;
-		if ($result->num_rows > 0)
+		if ($result->num_rows == 0)
 		{
-			while ($count >= 0)
+			returnWithError( "No Records Found" );
+		}
+		else
+		{
+			$contacts = "[";
+			while ($result->num_rows > 0)
 			{
 				$row = $result->fetch_assoc();
 				$firstName = $row["firstName"];
 				$lastName = $row["lastName"];
-				$id = $row["UserID"];
-				$skill = $row["skills"];
-				$contacts[$count] = array("firstName"=>$firstName, "lastname"=>$lastName, "id"=>$id, "skill"=>$skill);
-				$count -= 1;
+				$skills = $row["skills"];
+				$email = $row["email"];
+				$phoneNumber = $row["phoneNumber"];
+				$projectLink = $row["projectLink"];
+				$myJsonObject = '"firstName":"' . $firstName . '", "lastName":"' . $lastName . '", "skills":"' . $skills . '", "email":"' . $email . '", "phoneNumber":"' . $phoneNumber . '", "projectLink":"' . $projectLink . '"';
+				
+				if($result->num_rows > 1)
+				{
+					$myJsonObject .= ',';
+				}
+				$contacts .= $myJsonObject;
 			}
+			$contacts .= "]";
 			returnWithInfo($contacts );
-		}
-		else
-		{
-			returnWithError( "No Records Found" );
 		}
 		$conn->close();
 	}
@@ -59,15 +67,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"", "skill":"", "error":"' . $err . '"}';
+		$retValue = '{"results":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
 	function returnWithInfo( $contacts )
 	{
-		// Not confident if this will work with a multidimensional
-		// array like $contacts
-		$retValue = json_encode( $contacts );
+		$retValue = '{"results":"' . $contacts . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
