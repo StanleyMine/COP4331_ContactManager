@@ -4,24 +4,24 @@ document
 
 async function createAccount(event) {
   event.preventDefault();
-  const createuser = document.getElementById("createuser").value;
-  const createpass = document.getElementById("createpass").value;
+  const Username = document.getElementById("createuser").value;
+  const Password = document.getElementById("createpass").value;
   const confpass = document.getElementById("confpass").value;
 
-  if (confpass != createpass) {
+  if (Password != createpass) {
     //passwords don't match
     document.getElementById("createError").innerText = "Passwords do not match";
   }
 
-  if (!checkValidName(createuser)) {
+  if (!checkValidName(Username)) {
     document.getElementById("createError").innerText =
       "Please enter a valid username.";
     return;
   }
 
   const response = await apiRequest("/LAMPAPI/createAccount.php", {
-    createuser,
-    createpass,
+    Username,
+    Password,
   });
 
   if (response.status == 200) {
