@@ -30,7 +30,7 @@ async function createAccount(event) {
       return;
     }
     // response.data stores normal data
-    document.getElementById("createError").innerText = response.data;
+    document.getElementById("createError").innerText = response.data.message;
   } else {
     document.getElementById("createError").innerText = response.data;
   }
