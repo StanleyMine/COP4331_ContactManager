@@ -25,7 +25,7 @@
 		$sql = "SELECT firstName, lastName, skill, email, phoneNumber FROM User_Info 
 		WHERE userID = .$inData["id"] AND 
 		firstName LIKE '%".$inData["firstName"]"%' OR
-		lastName LIKE '%".$inDATA["lastName"]"%';
+		lastName LIKE '%".$inDATA["lastName"]"%'";
 		$result = $conn->query($sql);
 		$count = ($result->num_rows)-1;
 		if ($result->num_rows > 0)
