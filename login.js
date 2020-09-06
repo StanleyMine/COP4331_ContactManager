@@ -25,7 +25,10 @@ async function login(event) {
     return;
   }
 
-  const response = await apiRequest("/api/login.php", { username, password });
+  const response = await apiRequest("/LAMPAPI/login.php", {
+    username,
+    password,
+  });
 
   if (response.status == 200) {
     if (response.data.error) {
