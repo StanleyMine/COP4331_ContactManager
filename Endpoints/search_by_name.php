@@ -4,12 +4,12 @@
 
 	$servername = "localhost";
 	$admin_user = "group1db";
-	$admin_pass = "Group1_123!"
+	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
 	$firstName = "";
 	$lastName = "";
-	$skill = "";
+	$skills = "";
 	$email = "";
 	$phoneNumber = "";
 	$projectLink = "";
@@ -22,26 +22,23 @@
 	} 
 	else
 	{
-		$sql = "SELECT firstName, lastName, skill, email, phoneNumber FROM User_Info 
-		WHERE userID = .$inData["id"] AND 
-		firstName LIKE '%".$inData["firstName"]"%' OR
-		lastName LIKE '%".$inDATA["lastName"]"%'";
+		$sql = "SELECT firstName, lastName, skills, email, projectLink, phoneNumber FROM User_Info WHERE userID =" . $inData["id"] . " AND (firstName LIKE '%" . $inData["name"] . "%' OR lastName LIKE '%" . $inData["name"] . "%')";
 		$result = $conn->query($sql);
-		$count = ($result->num_rows)-1;
-		if ($result->num_rows > 0)
+		$count = $result->num_rows;
+		if ($count > 0)
 		{
-			$count = "[";
+			$contacts .= "[";
 			while ($count > 0)
 			{
 				$row = $result->fetch_assoc();
 				$firstName = $row["firstName"];
 				$lastName = $row["lastName"];
-				$skill = $row["skill"];
+				$skills = $row["skills"];
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
 				$myJsonObject = '{"firstName":"'.$firstName.'","lastName":"'.$lastName.'",
-								  "skill":"'.$skill.'","email":"'.$email.'",
+								  "skills":"'.$skills.'","email":"'.$email.'",
 								  "phoneNumber":"'.$phoneNumber.'",
 								  "projectLink":"'.$projectLink.'"}';
 				$contacts .= $myJsonObject;
@@ -80,7 +77,7 @@
 	
 	function returnWithInfo( $contacts )
 	{
-		$retValue = '{"results":'.$contacts.',"error":""}';
+		$retValue = '{"results":'. $contacts . ',"error":""}';
 		sendResultInfoAsJson($retValue);
 	}
 	
