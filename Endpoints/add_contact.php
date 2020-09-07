@@ -11,7 +11,7 @@
 	$conn = new mysqli($servername, $user, $pass, $thedb);
 	if ($conn->connect_error)
 	{
-		returnWithError( $conn->connect_erro );
+		returnWithError( $conn->connect_error );
 	}
 	else
 	{
@@ -27,10 +27,10 @@
             // Get the current date
 			$mydate=getdate(date("U"));
             $dateAdded = "$mydate[month] $mydate[mday], $mydate[year]";
-            
+            $space = " ";
             // insert into the User_Info table.
             
-			$sql = "INSERT into User_Info (userID, firstName, lastName, skills, projectLink, phoneNumber, email, dateAdded) VALUES ('" . $inData[id] . "', '" . $inData["firstName"] . "', '" . $inData["lastName"] . "', '" . $inData["skills"] . "', '" . $inData["projectLink"] . "', '" . $inData["phoneNumber"] . "', '" . $inData["email"] . "', '" . $dateAdded . "')";
+			$sql = "INSERT into User_Info (userID, firstName, lastName, skills, projectLink, phoneNumber, email, dateAdded, fullName) VALUES ('" . $inData[id] . "', '" . $inData["firstName"] . "', '" . $inData["lastName"] . "', '" . $inData["skills"] . "', '" . $inData["projectLink"] . "', '" . $inData["phoneNumber"] . "', '" . $inData["email"] . "', '" . $dateAdded . "', '" . $inData["firstName"] . $space . $inData["lastName"] . "')";
 			$result = $conn->query($sql);
 		
 			if ($result)
@@ -66,7 +66,7 @@
 
 	function returnWithInfo( $message )
 	{
-		$retValue = '{message":"' . $message . '"}';
+		$retValue = '{"message":"' . $message . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
