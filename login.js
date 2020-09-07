@@ -2,16 +2,16 @@ document.getElementById("login-form").addEventListener("submit", login);
 
 async function login(event) {
   event.preventDefault();
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  const Username = document.getElementById("username").value;
+  const Password = document.getElementById("password").value;
 
-  if (!username) {
+  if (!Username) {
     // checking "", blank, null, 0, false
     document.getElementById("error").innerText =
       "Please enter a valid username.";
     return;
   }
-  if (!password) {
+  if (!Password) {
     // checking "", blank, null, 0, false
     document.getElementById("error").innerText =
       "Please enter a valid password.";
@@ -19,15 +19,15 @@ async function login(event) {
   }
 
   // testing user to stop invalid strings
-  if (!checkValidName(username)) {
+  if (!checkValidName(Username)) {
     document.getElementById("error").innerText =
       "Please enter a valid username.";
     return;
   }
 
   const response = await apiRequest("/LAMPAPI/login.php", {
-    username,
-    password,
+    Username,
+    Password,
   });
 
   if (response.status == 200) {
