@@ -7,7 +7,8 @@ async function login(event) {
 
   if (!Username) {
     // checking "", blank, null, 0, false
-    errorMessage("Please enter a valid Username");
+    document.getElementById("error").innerText =
+      "Please enter a valid username.";
     return;
   }
   if (!Password) {
