@@ -22,7 +22,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT firstName, lastName, skills, email, projectLink, phoneNumber FROM User_Info WHERE userID =" . $inData["id"] . " AND (firstName LIKE '%" . $inData["name"] . "%' OR lastName LIKE '%" . $inData["name"] . "%')";
+		$sql = "SELECT firstName, lastName, skills, email, projectLink, phoneNumber FROM User_Info WHERE userID =" . $inData["id"] . " AND fullName LIKE '%" . $inData["name"] . "%'";
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($count > 0)
