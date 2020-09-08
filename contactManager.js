@@ -12,7 +12,9 @@ async function searchContacts() {
     "POST"
   );
 
-  // loop through response and append to table
+  for (const contact of response.data) {
+    addRow(contact);
+  }
 }
 
 function addRow(dataRow) {

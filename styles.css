@@ -135,6 +135,10 @@ input[type="submit"] {
   display: block;
   color: red;
 }
+#createSuccess {
+  display: block;
+  color: green;
+}
 
 .labeled-search-input input {
   border: 1px solid grey;

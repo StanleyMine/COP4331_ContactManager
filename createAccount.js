@@ -20,7 +20,7 @@ async function createAccount(event) {
   }
 
   const response = await apiRequest(
-    "/LAMPAPI/createAccount.php",
+    "/LAMPAPI/create_account.php",
     {
       Username,
       Password,
@@ -34,7 +34,8 @@ async function createAccount(event) {
       return;
     }
     // response.data stores normal data
-    document.getElementById("createError").innerText = response.data.message;
+    document.getElementById("createSuccess").innerText = response.data.message;
+    document.getElementById("createError").innerText = "";
   } else {
     document.getElementById("createError").innerText = response.data;
   }
