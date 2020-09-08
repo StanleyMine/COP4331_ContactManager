@@ -37,6 +37,7 @@ async function login(event) {
     }
     // response.data stores normal data
     // TODO : access contacts manager from here
+    window.location.replace("contactManager.html");
     // Redirect the user
   } else {
     document.getElementById("error").innerText = response.data;
