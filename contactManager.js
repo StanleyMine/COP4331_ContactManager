@@ -37,9 +37,7 @@ function addRow(dataRow) {
 async function deleteRowRequest(dataRow) {
   const response = await apiRequest(
     "/LAMPAPI/deleteContact.php",
-    {
-      id,
-    },
+    { id },
     "DELETE"
   );
 
