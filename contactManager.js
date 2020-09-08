@@ -42,10 +42,10 @@ async function deleteRowRequest(dataRow) {
   );
 
   if (response.status != 200) {
-    errorMessage(response.data.error);
+    errorMessage("Something went wrong, try again later.");
     return false;
   } else if (response.data.error) {
-    errorMessage(response.data.message);
+    errorMessage(response.data.error);
     return false;
   }
   return true;
