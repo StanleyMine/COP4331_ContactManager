@@ -1,7 +1,7 @@
-async function apiRequest(endpoint, data) {
+async function apiRequest(endpoint, data, requestType) {
   try {
     const response = await fetch(endpoint, {
-      method: "POST",
+      method: requestType,
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,4 +27,16 @@ function checkValidName(myString) {
     return false;
   }
   return true;
+}
+
+function errorMessage(message) {
+  const errorEl = document.createElement("div");
+  errorEl.className = "floating-error";
+  errorEl.innerText = message;
+
+  document.body.appendChild(errorEl);
+
+  setTimeout(() => {
+    errorEl.remove();
+  }, 5000);
 }

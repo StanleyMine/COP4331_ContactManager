@@ -1,20 +1,10 @@
 async function searchContacts() {
   // display dyanmic table growing with result matches
   // look into innerHTML
-  const errorEl = document.createElement("div");
-  errorEl.className = "floating-error";
-  errorEl.innerText = "My error message";
-  errorEl.style.animation = "5s fade-in-out";
-
-  document.body.appendChild(errorEl);
-
-  setTimeout(() => {
-    errorEl.remove();
-  }, 5000);
 }
 
 function addRow(dataRow) {
-  const mytable = document.getElementById("contact-table");
+  const myTable = document.getElementById("contact-table");
   const row = document.createElement("tr");
   const columnKeys = [
     "firstName",
@@ -34,14 +24,33 @@ function addRow(dataRow) {
   const deleteCell = document.createElement("td");
   deleteCell.innerText = "🗑️";
   deleteCell.addEventListener("click", async () => {
-    await deleteRowRequest(dataRow.id); // you need to make this
-    row.remove(); // detach the row if and when the request gets a success response
+    const succeeded = await deleteRowRequest(dataRow.id);
+    if (succeeded) {
+      row.remove();
+    }
   });
   row.appendChild(deleteCell);
 
-  table.appendChild(row);
+  myTable.appendChild(row);
 }
 
-async function deleteContact() {}
+async function deleteRowRequest(dataRow) {
+  const response = await apiRequest(
+    "/LAMPAPI/deleteContact.php",
+    {
+      id,
+    },
+    "DELETE"
+  );
+
+  if (response.status != 200) {
+    errorMessage(response.data.error);
+    return false;
+  } else if (response.data.error) {
+    errorMessage(response.data.message);
+    return false;
+  }
+  return true;
+}
 
 async function createContact() {}

@@ -7,8 +7,7 @@ async function login(event) {
 
   if (!Username) {
     // checking "", blank, null, 0, false
-    document.getElementById("error").innerText =
-      "Please enter a valid username.";
+    errorMessage("Please enter a valid Username");
     return;
   }
   if (!Password) {
@@ -25,10 +24,14 @@ async function login(event) {
     return;
   }
 
-  const response = await apiRequest("/LAMPAPI/login.php", {
-    Username,
-    Password,
-  });
+  const response = await apiRequest(
+    "/LAMPAPI/login.php",
+    {
+      Username,
+      Password,
+    },
+    "POST"
+  );
 
   if (response.status == 200) {
     if (response.data.error) {

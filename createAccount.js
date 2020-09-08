@@ -19,10 +19,14 @@ async function createAccount(event) {
     return;
   }
 
-  const response = await apiRequest("/LAMPAPI/createAccount.php", {
-    Username,
-    Password,
-  });
+  const response = await apiRequest(
+    "/LAMPAPI/createAccount.php",
+    {
+      Username,
+      Password,
+    },
+    "POST"
+  );
 
   if (response.status == 200) {
     if (response.data.error) {
