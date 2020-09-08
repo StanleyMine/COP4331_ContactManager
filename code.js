@@ -29,6 +29,7 @@ function checkValidName(myString) {
   return true;
 }
 
+// creates a little bubble for error messages
 function errorMessage(message) {
   const errorEl = document.createElement("div");
   errorEl.className = "floating-error";

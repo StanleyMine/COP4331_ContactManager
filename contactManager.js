@@ -1,6 +1,18 @@
+document
+  .getElementById("search-form")
+  .addEventListener("submit", searchContacts);
+
 async function searchContacts() {
-  // display dyanmic table growing with result matches
-  // look into innerHTML
+  const name = document.getElementById("name-input").value;
+  const skill = document.getElementById("skill-input").value;
+  // need to check values for separate end points
+  const response = await apiRequest(
+    "/LAMPAPI/searchContact.php",
+    { name, skill },
+    "POST"
+  );
+
+  // loop through response and append to table
 }
 
 function addRow(dataRow) {
