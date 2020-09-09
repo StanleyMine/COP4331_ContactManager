@@ -1,0 +1,14 @@
+// API Consumes
+{
+    "username":"ciaraboogerbutt",
+    "password":"fantasticfours",
+    "firstName":"Ciara",
+    "lastName":"Xiaoyu"
+}
+
+// API produces
+{
+    "firstName":"Ciara",
+    "lastName":"Xiaoyu",
+    "message":"Account successfully created!"
+}
