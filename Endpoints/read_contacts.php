@@ -7,6 +7,7 @@
 	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
+	$fullName = "";
 	$firstName = "";
 	$lastName = "";
 	$skills = "";
@@ -35,6 +36,7 @@
 			while ($count > 0)
 			{
 				$row = $result->fetch_assoc();
+				$fullName = $row["fullName"];
 				$firstName = $row["firstName"];
 				$lastName = $row["lastName"];
 				$skills = $row["skills"];
