@@ -1,0 +1,29 @@
+// API consumes (put this into body of ARC)
+{
+    "id":1,
+    "firtName":"Iron",
+    "lastName":"Fist",
+    "phoneNumber":"0102030405",
+    "email":"iron.fist@email.com",
+    "projectLink":"",
+    "skills":"judo, wise words"
+}
+
+
+// Produces: Possible messages from the API (only one)
+{
+    "message":"This contact may already exist. Please check the information." // Checks by phoneNumber
+}
+
+{
+    "message":"There was a problem adding the contact" // Pretty self-explanatory (occurs if there is a valid connection but for some reason the contact isn't added)
+}
+
+{
+    "message": // The error message sent by the server if the connection fails
+}
+
+
+{
+    "message":"Contact successfully added!" // This is the goal
+}
