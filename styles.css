@@ -65,9 +65,10 @@ a:active {
   display: flex;
 }
 
-.login-section {
+.login-section, .add-contact-section {
   margin: 16px;
 }
+#add-contact-form input[type="submit"],
 #create-account input[type="submit"],
 #login-form input[type="submit"] {
   margin: 16px;
@@ -102,11 +103,11 @@ input[type="submit"] {
   background-color: var(--primary-color);
   border: none;
 }
-#login-form label {
+#add-contact-form label, #login-form label {
   margin: auto;
   display: block;
 }
-#login-form {
+#add-contact-form, #login-form{
   margin: auto;
   font-size: large;
 }
@@ -116,6 +117,7 @@ input[type="submit"] {
   font-weight: bold;
 }
 
+// Create Account CSS
 #createAccountLink {
   margin-top: 24px;
 }
@@ -166,6 +168,8 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
 }
+
+// Contact Manager CSS
 #search-form {
   position: relative;
   display: inline-flex;
