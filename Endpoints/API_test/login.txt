@@ -1,0 +1,13 @@
+// API Consumes
+{
+    "Username":"manly",
+    "Password":"stanley"
+}
+
+// API produces
+{
+    "id":19,
+    "firstName":"Stanley",
+    "lastName":"Minervini",
+    "error":""
+}
