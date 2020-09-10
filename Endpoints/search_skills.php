@@ -7,8 +7,7 @@
 	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
-	$firstName = "";
-	$lastName = "";
+	$fullName = "";
 	$skills = "";
 	$email = "";
 	$phoneNumber = "";
@@ -22,7 +21,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT firstName,lastName,skills,projectLink,email,phoneNumber FROM User_Info where skills LIKE '%" . $inData["skill"] . "%' and userID=" . $inData["id"];
+		$sql = "SELECT fullName,skills,projectLink,email,phoneNumber FROM User_Info where skills LIKE '%" . $inData["skill"] . "%' and userID=" . $inData["id"];
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($result->num_rows == 0)
@@ -35,13 +34,12 @@
 			while ($count > 0)
 			{
 				$row = $result->fetch_assoc();
-				$firstName = $row["firstName"];
-				$lastName = $row["lastName"];
+				$fullName = $row["fullName"];
 				$skills = $row["skills"];
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
-				$myJsonObject = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
+				$myJsonObject = '{"fullName":"' . $fullName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
 				
 				$contacts .= $myJsonObject;
 				if($count > 1)
