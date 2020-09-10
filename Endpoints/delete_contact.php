@@ -42,13 +42,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"message":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $message )
 	{
-		$retValue = '{"message":"' . $message . '"}';
+		$retValue = '{"error":"' . $message . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
