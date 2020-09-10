@@ -23,7 +23,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT firstName,lastName,skills,projectLink,email,phoneNumber FROM User_Info where userID=" . $inData["id"];
+		$sql = "SELECT fullName,skills,projectLink,email,phoneNumber FROM User_Info where userID=" . $inData["id"];
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($result->num_rows == 0)
@@ -37,13 +37,11 @@
 			{
 				$row = $result->fetch_assoc();
 				$fullName = $row["fullName"];
-				$firstName = $row["firstName"];
-				$lastName = $row["lastName"];
 				$skills = $row["skills"];
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
-				$myJsonObject = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
+				$myJsonObject = '{"fullName":"' . $fullName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
 				
 				$contacts .= $myJsonObject;
 				if($count > 1)
