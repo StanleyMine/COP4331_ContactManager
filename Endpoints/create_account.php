@@ -13,7 +13,7 @@
 	$conn = new mysqli($servername, $user, $pass, $thedb);
 	if ($conn->connect_error)
 	{
-		returnWithError( $conn->connect_erro );
+		returnWithError( $conn->connect_error );
 	}
 	else
 	{
@@ -68,14 +68,15 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"firstName":"","lastName":"","message":"' . $err . '"}';
+		$retValue = '{"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $firstName, $lastName, $message )
 	{
-		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","message":"' . $message . '"}';
+		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":"' . $message . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 ?>
+
