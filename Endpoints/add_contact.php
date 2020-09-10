@@ -30,7 +30,7 @@
             $space = " ";
             // insert into the User_Info table.
             
-			$sql = "INSERT into User_Info (userID, firstName, lastName, skills, projectLink, phoneNumber, email, dateAdded, fullName) VALUES ('" . $inData[id] . "', '" . $inData["firstName"] . "', '" . $inData["lastName"] . "', '" . $inData["skills"] . "', '" . $inData["projectLink"] . "', '" . $inData["phoneNumber"] . "', '" . $inData["email"] . "', '" . $dateAdded . "', '" . $inData["firstName"] . $space . $inData["lastName"] . "')";
+			$sql = "INSERT into User_Info (userID, fullName, skills, projectLink, phoneNumber, email, dateAdded) VALUES ('" . $inData[id] . "', '" . $inData["fullName"] . "', '" . $inData["skills"] . "', '" . $inData["projectLink"] . "', '" . $inData["phoneNumber"] . "', '" . $inData["email"] . "', '" . $dateAdded . "')";
 			$result = $conn->query($sql);
 		
 			if ($result)
@@ -60,14 +60,15 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"message":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $message )
 	{
-		$retValue = '{"message":"' . $message . '"}';
+		$retValue = '{"error":"' . $message . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 ?>
+
