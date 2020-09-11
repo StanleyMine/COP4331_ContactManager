@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <script type="text/javascript" src="/js/code.js" defer></script>
+    <script type="text/javascript" src="code.js" defer></script>
 
     <title>Contact Manager</title>
 
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -17,23 +17,15 @@
         <form id="search-form">
           <div class="border-draw" id="name-input">
             <div class="labeled-search-input">
-              <label for="name-search">Name:</label>
+              <select id="select-search">
+                <option>Name</option>
+                <option>Skill</option>
+              </select>
               <input
                 type="text"
-                id="name-search"
-                name="name-search"
-                placeholder="name"
-              />
-            </div>
-          </div>
-          <div class="border-draw" id="skill-input">
-            <div class="labeled-search-input">
-              <label for="skill-search">Skill: </label>
-              <input
-                type="text"
-                id="skill-search"
-                name="skill-search"
-                placeholder="skill"
+                id="search-input"
+                name="search-input"
+                placeholder="text"
               />
             </div>
           </div>
@@ -41,21 +33,25 @@
             <input type="submit" value="Search" />
           </div>
           <div class="border-draw" id="add-account-button">
-            <button type="button" onClick="window.location = 'addContact.html';">Add Contact</button>
+            <button
+              type="button"
+              onClick="window.location = 'addContact.html';"
+            >
+              Add Contact
+            </button>
           </div>
           <div class="border-draw" id="logout-button">
             <button type="button" onClick="">Log out</button>
           </div>
           <div class="border-draw" id="deactivate-account-button">
-            <button type="button" >Deactivate Account</button>
+            <button type="button">Deactivate Account</button>
           </div>
         </form>
 
         <!--  style="visibility: hidden;" -->
         <table>
           <tr>
-            <th>First</th>
-            <th>Last</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
             <th>Skill</th>
@@ -63,8 +59,7 @@
             <th>-</th>
           </tr>
           <tr>
-            <td>jane</td>
-            <td>doe</td>
+            <td>jane doe</td>
             <td>myEmail@gmail.com</td>
             <td>123-456-7890</td>
             <td>cpp</td>
@@ -72,8 +67,7 @@
             <td>🗑️</td>
           </tr>
           <tr>
-            <td>john</td>
-            <td>doe</td>
+            <td>john doe</td>
             <td>myEmail@gmail.com</td>
             <td>123-456-7890</td>
             <td>java</td>
@@ -81,8 +75,7 @@
             <td>🗑️</td>
           </tr>
           <tr>
-            <td>stan</td>
-            <td>man</td>
+            <td>stan man</td>
             <td>myEmail@gmail.com</td>
             <td>123-456-7890</td>
             <td>c</td>
@@ -90,8 +83,7 @@
             <td>🗑️</td>
           </tr>
           <tr>
-            <td>Island</td>
-            <td>lonely</td>
+            <td>Island lonely</td>
             <td>myEmail@gmail.com</td>
             <td>123-456-7890</td>
             <td>d</td>
@@ -104,6 +96,13 @@
             <td>-</td>
             <td>-</td>
             <td>-</td>
+            <td>🗑️</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
             <td>-</td>
             <td>🗑️</td>
           </tr>
@@ -113,20 +112,9 @@
             <td>-</td>
             <td>-</td>
             <td>-</td>
-            <td>-</td>
             <td>🗑️</td>
           </tr>
           <tr>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>🗑️</td>
-          </tr>
-          <tr>
-            <td>-</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -137,6 +125,6 @@
         </table>
       </div>
     </div>
-    <div id="floating-error">Failed to delete contact</div>
+    <div id="floating-error">failed to delete contact</div>
   </body>
 </html>

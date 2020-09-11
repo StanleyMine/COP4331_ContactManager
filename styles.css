@@ -1,7 +1,7 @@
 body {
   background-color: var(--primary-color);
 }
-.floating-error {
+#floating-error {
   background: #ff4444;
   border-radius: 4px;
   padding: 8px 16px;
@@ -65,7 +65,8 @@ a:active {
   display: flex;
 }
 
-.login-section, .add-contact-section {
+.login-section,
+.add-contact-section {
   margin: 16px;
 }
 #add-contact-form input[type="submit"],
@@ -103,11 +104,13 @@ input[type="submit"] {
   background-color: var(--primary-color);
   border: none;
 }
-#add-contact-form label, #login-form label {
+#add-contact-form label,
+#login-form label {
   margin: auto;
   display: block;
 }
-#add-contact-form, #login-form{
+#add-contact-form,
+#login-form {
   margin: auto;
   font-size: large;
 }
@@ -146,7 +149,7 @@ input[type="submit"] {
   border: 1px solid grey;
   outline: 0;
 }
-.labeled-search-input label {
+.labeled-search-input select {
   background: grey;
   color: white;
   padding-left: 4px;
@@ -164,7 +167,7 @@ input[type="submit"] {
 
 .border-draw {
   margin: 8px;
-  display: flex;
+  display: inline-block;
   align-items: center;
   justify-content: center;
 }
@@ -172,7 +175,7 @@ input[type="submit"] {
 // Contact Manager CSS
 #search-form {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   margin: 0px 0px 8px 8px;
   align-content: flex-start;
 }
@@ -201,6 +204,7 @@ tr:nth-child(odd) {
 #contact-table {
   padding: 24px 0px 0px 0px;
   background-color: white;
+  display: inline-block;
 }
 #contact-table th {
   background-color: grey;
