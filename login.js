@@ -39,10 +39,17 @@ async function login(event) {
       document.getElementById("error").innerText = response.data.error;
       return;
     }
-    // response.data stores normal data
-    // TODO : access contacts manager from here
+
+    var d = new Date();
+    d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie =
+      "username=" +
+      response.data.id +
+      ";" +
+      expires +
+      "; path=/contactManager.html";
     window.location.replace("contactManager.html");
-    // Redirect the user
   } else {
     document.getElementById("error").innerText = response.data;
   }
