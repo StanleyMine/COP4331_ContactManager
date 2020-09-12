@@ -7,6 +7,7 @@
 	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
+	$contactID = 0;
 	$fullName = "";
 	$skills = "";
 	$email = "";
@@ -21,7 +22,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT fullName, skills, email, projectLink, phoneNumber FROM User_Info WHERE userID =" . $inData["id"] . " AND fullName LIKE '%" . $inData["name"] . "%'";
+		$sql = "SELECT id, fullName, skills, email, projectLink, phoneNumber FROM User_Info WHERE userID =" . $inData["id"] . " AND fullName LIKE '%" . $inData["name"] . "%'";
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($count > 0)
@@ -30,12 +31,13 @@
 			while ($count > 0)
 			{
 				$row = $result->fetch_assoc();
+			    	$contactID = $row["id"];
 				$fullName = $row["fullName"];
 				$skills = $row["skills"];
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
-				$myJsonObject = '{"fullName":"'.$fullName.'",
+				$myJsonObject = '{"contactID":'.$contactID.', "fullName":"'.$fullName.'",
 								  "skills":"'.$skills.'","email":"'.$email.'",
 								  "phoneNumber":"'.$phoneNumber.'",
 								  "projectLink":"'.$projectLink.'"}';
