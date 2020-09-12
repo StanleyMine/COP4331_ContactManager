@@ -43,8 +43,7 @@ async function login(event) {
     var d = new Date();
     d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
     var expires = "expires=" + d.toUTCString();
-    document.cookie =
-      "username=" + response.data.id + ";" + expires + "; path=/";
+    document.cookie = "id=" + response.data.id + ";" + expires + "; path=/";
     window.location.replace("contactManager.html");
   } else {
     document.getElementById("error").innerText = response.data;

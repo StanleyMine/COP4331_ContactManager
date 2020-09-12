@@ -4,8 +4,12 @@ document
 
 document.addEventListener("load", fillTable);
 
+let id = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("id"))
+  .split("=")[1];
+
 async function fillTable() {
-  const id = document.cookie;
   const response = await apiRequest(
     "/LAMPAPI/read_contacts.php",
     { id },
@@ -28,7 +32,6 @@ async function fillTable() {
 async function searchContacts() {
   const searchType = document.getElementById("select-search").value;
   const searchCriteria = document.getElementById("search-input").value;
-  const id = document.cookie;
   const myTbody = document.getElementById("tableTbody");
   let path;
   let data = { id };
@@ -96,8 +99,6 @@ function addRow(dataRow) {
 }
 
 async function deleteRowRequest(phoneNumber) {
-  const id = document.cookie;
-
   const response = await apiRequest(
     "/LAMPAPI/deleteContact.php",
     { id, phoneNumber },
