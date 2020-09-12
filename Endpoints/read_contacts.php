@@ -15,6 +15,7 @@
 	$email = "";
 	$phoneNumber = "";
 	$projectLink = "";
+	$dateAdded = "";
 	$contacts = "";
 
 	$conn = new mysqli($servername, $admin_user, $admin_pass, $thedb);
@@ -24,7 +25,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT id,fullName,skills,projectLink,email,phoneNumber FROM User_Info where userID=" . $inData["id"];
+		$sql = "SELECT id,fullName,skills,projectLink,email,phoneNumber,dateAdded FROM User_Info where userID=" . $inData["id"];
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($result->num_rows == 0)
@@ -43,7 +44,8 @@
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
-				$myJsonObject = '{"contactID":'.$contactID.', "fullName":"' . $fullName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
+				$dateAdded = $row["dateAdded"];
+				$myJsonObject = '{"contactID":'.$contactID.', "fullName":"' . $fullName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '","dateAdded":"'.$dateAdded.'"}';
 				
 				$contacts .= $myJsonObject;
 				if($count > 1)
