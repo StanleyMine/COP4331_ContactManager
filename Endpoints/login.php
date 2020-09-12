@@ -10,6 +10,7 @@
 	$id = 0;
 	$firstName = "";
 	$lastName = "";
+	$lastLog = "";
 
 	$conn = new mysqli($servername, $admin_user, $admin_pass, $thedb);
 	
@@ -19,7 +20,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT id,firstName,lastName FROM Login where username='" . $inData["Username"] . "' and password='" . $inData["Password"] . "'";
+		$sql = "SELECT id,firstName,lastName,lastLogin FROM Login where username='" . $inData["Username"] . "' and password='" . $inData["Password"] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -28,7 +29,26 @@
 			$lastName = $row["lastName"];
 			$id = $row["id"];
 			
-			returnWithInfo($firstName, $lastName, $id );
+			$dateBefore = $row["lastLogin"];
+			$dateNow = date_create();
+			$date2 = date_format($dateNow, "Y-m-j");
+			
+			if ($dateBefore==NULL){
+			    	$sql = "UPDATE Login SET lastLogin='" . $date2 . "' WHERE id=" . $id;
+			        $result = $conn->query($sql);
+	                	returnWithInfo($firstName, $lastName, $id, $lastLog );
+			}
+			else {
+				$date1 = date_create_from_format("Y-m-j", $dateBefore);
+				$diff = date_diff($date1, $date2);
+
+				$lastLog = $diff->format("Days since last log in: %a");
+
+				$sql = "UPDATE Login SET lastLogin='" . $date2 . "' WHERE id=" . $id;
+				$result = $conn->query($sql);
+
+				returnWithInfo($firstName, $lastName, $id, $lastLog );
+			}
 		}
 		else
 		{
@@ -50,13 +70,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"firstName":"","lastName":"","lastLog":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","lastLog":"' . $lastLog . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
