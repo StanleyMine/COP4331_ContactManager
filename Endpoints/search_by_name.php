@@ -13,6 +13,7 @@
 	$email = "";
 	$phoneNumber = "";
 	$projectLink = "";
+	$dateAdded = "";
 	$contacts = "";
 
 	$conn = new mysqli($servername, $admin_user, $admin_pass, $thedb);
@@ -22,7 +23,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT id, fullName, skills, email, projectLink, phoneNumber FROM User_Info WHERE userID =" . $inData["id"] . " AND fullName LIKE '%" . $inData["name"] . "%'";
+		$sql = "SELECT id, fullName, skills, email, projectLink, phoneNumber,dateAdded FROM User_Info WHERE userID =" . $inData["id"] . " AND fullName LIKE '%" . $inData["name"] . "%'";
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($count > 0)
@@ -31,16 +32,18 @@
 			while ($count > 0)
 			{
 				$row = $result->fetch_assoc();
-			    	$contactID = $row["id"];
+			    $contactID = $row["id"];
 				$fullName = $row["fullName"];
 				$skills = $row["skills"];
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
-				$myJsonObject = '{"contactID":'.$contactID.', "fullName":"'.$fullName.'",
-								  "skills":"'.$skills.'","email":"'.$email.'",
-								  "phoneNumber":"'.$phoneNumber.'",
-								  "projectLink":"'.$projectLink.'"}';
+				$dateAdded = $row["dateAdded"];
+				$myJsonObject = '{"contactID":'.$contactID.',"fullName":"'.$fullName.'",
+						  "skills":"'.$skills.'","email":"'.$email.'",
+						  "phoneNumber":"'.$phoneNumber.'",
+						  "projectLink":"'.$projectLink.'",
+				                  "dateAdded":"'.$dateAdded.'"}';
 				$contacts .= $myJsonObject;
 				if ($count > 1)
 				{
