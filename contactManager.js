@@ -2,6 +2,29 @@ document
   .getElementById("search-form")
   .addEventListener("submit", searchContacts);
 
+document.addEventListener("load", fillTable);
+
+async function fillTable() {
+  const id = document.cookie;
+  const response = await apiRequest(
+    "/LAMPAPI/read_contacts.php",
+    { id },
+    "POST"
+  );
+  if (response == 200) {
+    if (response.data.error) {
+      errorMessage(response.data.error);
+      return;
+    }
+    myTbody.innerHTML = "";
+    for (const contact of response.data) {
+      addRow(contact);
+    }
+  } else {
+    errorMessage("Something went wrong, try again later.");
+  }
+}
+
 async function searchContacts() {
   const searchType = document.getElementById("select-search").value;
   const searchCriteria = document.getElementById("search-input").value;
