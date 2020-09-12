@@ -2,12 +2,23 @@ document
   .getElementById("search-form")
   .addEventListener("submit", searchContacts);
 
+document.getElementById("logout-button").addEventListener("click", logout);
+
 document.addEventListener("load", fillTable);
 
 let id = document.cookie
   .split("; ")
   .find((row) => row.startsWith("id"))
   .split("=")[1];
+
+function logout() {
+  var expires = "expires=" + d.toUTCString();
+  document.cookie =
+    "id=" +
+    response.data.id +
+    "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  window.location.replace(".");
+}
 
 async function fillTable() {
   const response = await apiRequest(
