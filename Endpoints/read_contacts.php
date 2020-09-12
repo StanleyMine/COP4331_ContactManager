@@ -7,6 +7,7 @@
 	$admin_pass = "Group1_123!";
 	$thedb = "group1db_project1";
 	
+	$contactID = 0;
 	$fullName = "";
 	$firstName = "";
 	$lastName = "";
@@ -23,7 +24,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT fullName,skills,projectLink,email,phoneNumber FROM User_Info where userID=" . $inData["id"];
+		$sql = "SELECT id,fullName,skills,projectLink,email,phoneNumber FROM User_Info where userID=" . $inData["id"];
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 		if ($result->num_rows == 0)
@@ -36,12 +37,13 @@
 			while ($count > 0)
 			{
 				$row = $result->fetch_assoc();
+				$contactID = $row["id"];
 				$fullName = $row["fullName"];
 				$skills = $row["skills"];
 				$email = $row["email"];
 				$phoneNumber = $row["phoneNumber"];
 				$projectLink = $row["projectLink"];
-				$myJsonObject = '{"fullName":"' . $fullName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
+				$myJsonObject = '{"contactID":'.$contactID.', "fullName":"' . $fullName . '","skills":"' . $skills . '","email":"' . $email . '","phoneNumber":"' . $phoneNumber . '","projectLink":"' . $projectLink . '"}';
 				
 				$contacts .= $myJsonObject;
 				if($count > 1)
