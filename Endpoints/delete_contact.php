@@ -16,7 +16,7 @@
 	else
 	{
 		// Checks whether the username is already in the database.
-		$sql = "DELETE from User_Info WHERE (userID=" . $inData["id"] . " and phoneNumber='" . $inData["phoneNumber"] . "')"; 
+		$sql = "DELETE from User_Info WHERE (userID=" . $inData["id"] . " and id='" . $inData["contactID"] . "')"; 
 		$result = $conn->query($sql);
 		if($result)
 		{
