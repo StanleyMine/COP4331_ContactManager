@@ -31,7 +31,7 @@
 			
 			$dateBefore = $row["lastLogin"];
 			$dateNow = date_create();
-			$date2 = date_format($dateNow, "Y-m-j");
+			$date2 = date_format($dateNow, 'Y-m-j');
 			
 			if ($dateBefore==NULL){
 			    	$sql = "UPDATE Login SET lastLogin='" . $date2 . "' WHERE id=" . $id;
@@ -39,8 +39,8 @@
 	                	returnWithInfo($firstName, $lastName, $id, $lastLog );
 			}
 			else {
-				$date1 = date_create_from_format("Y-m-j", $dateBefore);
-				$diff = date_diff($date1, $date2);
+				$date1 = date_create_from_format('Y-m-j', $dateBefore);
+				$diff = date_diff($date1, $dateNow);
 
 				$lastLog = $diff->format("Days since last log in: %a");
 
@@ -74,7 +74,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $firstName, $lastName, $id, $lastLog )
 	{
 		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","lastLog":"' . $lastLog . '","error":""}';
 		sendResultInfoAsJson( $retValue );
