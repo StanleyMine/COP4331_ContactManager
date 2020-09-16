@@ -38,6 +38,15 @@ definitions:
         type: string
         example: "Smith"
         
+  delete_account:
+    type: object
+    required:
+    - id
+    properties:
+      id: 
+        type: integer
+        example: 1
+        
   add_contact:
     type: object
     required:
@@ -184,6 +193,29 @@ paths:
       description: create_account
       schema:
         $ref: '#/definitions/create_account'
+        
+  /delete_account.php:
+    post:
+      tags:
+        - Users
+      summary: Deletes account for contact manager
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: deleteAccount
+      description: Deletes account for contact manager
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: idInfo
+      description: delete_account
+      schema:
+        $ref: '#/definitions/delete_account'
 
   /add_contact.php:
     post:
