@@ -1,0 +1,329 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Endpoints
+  description: ''
+definitions: 
+  login:
+    type: object
+    required:
+    - Username
+    - Password
+    properties:
+      Username: 
+        type: string
+        example: "freddo"
+      Password:
+        type: string
+        example: "password_is_the_key"
+        
+  create_account:
+    type: object
+    required:
+    - Username
+    - Password
+    - firstName
+    - lastName
+    properties:
+      Username: 
+        type: string
+        example: "freddo"
+      Password:
+        type: string
+        example: "password_is_the_key"
+      firstName:
+        type: string
+        example: "Fred"
+      lastName: 
+        type: string
+        example: "Smith"
+        
+  add_contact:
+    type: object
+    required:
+    - id
+    - fullName
+    - phoneNumber
+    properties:
+      id: 
+        type: integer
+        example: 1
+      fullName:
+        type: string
+        example: "Ylliana Jacobson"
+      phoneNumber:
+        type: string
+        example: "1223344556"
+      skills:
+        type: string
+        example: "JavaScript, ReactJS"
+      email:
+        type: string
+        example: "ylliana.jacobson@email.com"
+      projectLink:
+        type: string
+        example: "mygithub.com"
+        
+  read_contacts:
+    type: object
+    required:
+    - id
+    properties:
+      id: 
+        type: integer
+        example: 1
+        
+  search_by_name:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id: 
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "Sta"
+        
+  search_skills:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id: 
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "Sta"
+        
+  delete_contact:
+    type: object
+    required:
+    - id
+    - contactID
+    properties:
+      id:
+        type: integer
+        example: 1
+      contactID:
+        type: integer
+        example: 1
+        
+  update_contact:
+    type: object
+    required:
+    - contactID
+    - fullName
+    - phoneNumber
+    properties:
+      contactID: 
+        type: integer
+        example: 1
+      fullName:
+        type: string
+        example: "Ylliana Jacobson"
+      phoneNumber:
+        type: string
+        example: "1223344556"
+      skills:
+        type: string
+        example: "JavaScript, ReactJS"
+      email:
+        type: string
+        example: "ylliana.jacobson@email.com"
+      projectLink:
+        type: string
+        example: "mygithub.com"
+  
+paths: 
+  /login.php:
+    post:
+      tags:
+        - Users
+      summary: Logs in to Contact Manager
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: doLogin
+      description: Logs in to Contact Manager
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: loginItem
+      description: login
+      schema:
+        $ref: '#/definitions/login'
+  
+  /create_account.php:
+    post:
+      tags:
+        - Users
+      summary: Creates account for contact manager
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: createAccount
+      description: Creates account for contact manager
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: accountInfo
+      description: create_account
+      schema:
+        $ref: '#/definitions/create_account'
+
+  /add_contact.php:
+    post:
+      tags:
+        - Contacts
+      summary: Adds contact to contact manager for user
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: addContact
+      description: Adds contact to contact manager for user
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: contactInfo
+      description: add_contact
+      schema:
+        $ref: '#/definitions/add_contact'
+        
+  /read_contacts.php:
+    post:
+      tags:
+        - Contacts
+      summary: Reads all contacts in the contact manager for specified user
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: displayContacts
+      description: Reads all contacts in the contact manager for specified user
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: allContacts
+      description: read_contacts
+      schema:
+        $ref: '#/definitions/read_contacts'
+        
+  /search_by_name.php:
+    post:
+      tags:
+        - Contacts
+      summary: Searches for match on input string within contact names
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: searchContactNames
+      description: Searches for match on input string within contact names
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: seekerInfo
+      description: search_by_name
+      schema:
+        $ref: '#/definitions/search_by_name'
+        
+  /search_skills.php:
+    post:
+      tags:
+        - Contacts
+      summary: Searches for match on input string within contact skills
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: searchContactSkills
+      description: Searches for match on input string within contact skills
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: skills
+      description: search_skills
+      schema:
+        $ref: '#/definitions/search_skills'      
+        
+  /delete_contact.php:
+    post:
+      tags:
+        - Contacts
+      summary: Deletes one contact based on userID and phoneNumber of contact
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: deleteContact
+      description: Deletes one contact based on userID and phoneNumber of contact
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: deleteContact
+      description: delete_contact
+      schema:
+        $ref: '#/definitions/delete_contact'
+        
+  /update_contact.php:
+    post:
+      tags:
+        - Contacts
+      summary: Updates contact in contact manager for user
+      responses:
+        200:
+          description: OK
+        400:
+          description: Page Not Found
+      operationId: updateContact
+      description: Updates contact in contact manager for user
+      consumes: 
+            - application/json
+      produces:
+            - application/json
+    parameters: 
+    - in: body
+      name: updateInfo
+      description: update_contact
+      schema:
+        $ref: '#/definitions/update_contact'
+
+host: skillseek.xyz
+basePath: /LAMPAPI
+schemes:
+ - http
