@@ -8,7 +8,7 @@ async function createAccount(event) {
   const Password = document.getElementById("createpass").value;
   const confpass = document.getElementById("confpass").value;
 
-  if (Password != createpass) {
+  if (Password != confpass) {
     //passwords don't match
     document.getElementById("createError").innerText = "Passwords do not match";
   }
@@ -18,6 +18,8 @@ async function createAccount(event) {
       "Please enter a valid username.";
     return;
   }
+
+  Password = md5(Password);
 
   const response = await apiRequest(
     "/LAMPAPI/create_account.php",

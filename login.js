@@ -25,6 +25,8 @@ async function login(event) {
     return;
   }
 
+  Password = md5(Password);
+
   const response = await apiRequest(
     "/LAMPAPI/login.php",
     {
