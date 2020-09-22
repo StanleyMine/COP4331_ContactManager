@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <!-- TODO: write corresponding js -->
-  <head>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <title>Add Contact</title>
-  </head>
-
-  <body>
-    <div class="centerdiv">
-      <div class="container">
-        <h1>Add Contact</h1>
-        <form id="add-contact-form">
-          <div class="add-contact-section">
-            <label for="firstName">First Name:<br /></label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="Anita"
-            />
-          </div>
-          <div class="add-contact-section">
-            <label for="lastName">Last Name:<br /></label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Bath"
-            />
-          </div>
-
-          <div class="add-contact-section">
-            <label for="email">Email:<br /></label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="myname@example.com"
-            />
-          </div>
-          <div class="add-contact-section">
-            <label for="phone">Phone Number:<br /></label>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              placeholder="(xxx) xxx-xxxx"
-            />
-          </div>
-          <div class="add-contact-section">
-            <label for="skill">Skill:<br /></label>
-            <input
-              type="text"
-              id="skill"
-              name="skill"
-              placeholder="Full Snack Developer"
-            />
-          </div>
-          <input type="submit" value="Add Contact" />
-          <span id="error"></span>
-        </form>
-        <br />
-      </div>
-    </div>
-  </body>
+    <!-- TODO: write corresponding js -->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <script type="text/javascript" src="/js/code.js" defer></script>
+        <script type="text/javascript" src="/js/addContact.js" defer></script>
+        <title>Add Contact</title>
+    </head>
+    <body>
+        <div class="centerdiv">
+            <div class="container" id="add-contact-form">
+                <h1>Add Contact</h1>
+                <form id="add-contact-form">
+                    <div class="box">
+                        <div class="add-contact-section">
+                            <label for="firstName">First Name:</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="John"
+                            />
+                        </div>
+                        <div class="add-contact-section">
+                            <label for="lastName">Last Name:</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Smith"
+                            />
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="add-contact-section">
+                            <label for="email">Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="myname@example.com"
+                            />
+                        </div>
+                        <div class="add-contact-section">
+                            <label for="phone">Phone Number:</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="(xxx) xxx-xxxx"
+                            />
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="add-contact-section">
+                            <label for="skill">Skill:</label>
+                            <input
+                                type="text"
+                                id="skill"
+                                name="skill"
+                                placeholder="Full Stack Developer"
+                            />
+                        </div>
+                        <div class="add-contact-section">
+                            <label for="projectLink">Project Link:</label>
+                            <input
+                                type="text"
+                                id="projectLink"
+                                name="projectLink"
+                                placeholder="www.github.com/..."
+                                />
+                        </div>
+                    </div>
+                    <input id="add-contact" type="submit" value="Add Contact" />
+                    <br />
+                    <input type="button" value="Contact Manager" />
+                    <span id="error"></span>
+                    <span id="success"></span>
+                </form>
+                <br />
+            </div>
+        </div>
+    </body>
 </html>
