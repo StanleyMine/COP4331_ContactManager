@@ -10,6 +10,10 @@ let id = document.cookie
   .split("; ")
   .find((row) => row.startsWith("id"))
   .split("=")[1];
+let lastLog = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("lastLog"))
+  .split("=")[1];
 
 function logout() {
   var expires = "expires=" + d.toUTCString();
@@ -17,10 +21,18 @@ function logout() {
     "id=" +
     response.data.id +
     "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  document.cookie =
+    "lastLog=" +
+    response.data.lastLog +
+    "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
   window.location.replace(".");
 }
 
 async function fillTable() {
+  const myTbody = document.getElementById("tableTbody");
+  const mySpan = document.getElementById("welcome-span");
+  mySpan.innerText =
+    "Welcome, it has been " + lastLog + " days since you last logged on.";
   const response = await apiRequest(
     "/LAMPAPI/read_contacts.php",
     { id },
@@ -99,13 +111,14 @@ function addRow(dataRow) {
   const deleteCell = document.createElement("td");
   deleteCell.innerText = "🗑️";
   deleteCell.addEventListener("click", async () => {
-    const succeeded = await deleteRowRequest(dataRow.phoneNumber);
-    if (succeeded) {
-      row.remove();
+    if (confirm("Delete Contact Confirmation")) {
+      const succeeded = await deleteRowRequest(dataRow.phoneNumber);
+      if (succeeded) {
+        row.remove();
+      }
     }
   });
   row.appendChild(deleteCell);
-
   myTable.appendChild(row);
 }
 
