@@ -36,19 +36,19 @@ function logout() {
 async function fillTable() {
   const myTbody = document.getElementById("tableTbody");
   const mySpan = document.getElementById("welcome-span");
-  mySpan.innerText = "Welcome, " + lastLog;
+  mySpan.innerText = lastLog;
+  myTbody.innerHTML = ""; // empty table if anything is in it
   const response = await apiRequest(
     "/LAMPAPI/read_contacts.php",
     { id },
     "POST"
   );
-  if (response == 200) {
+  if (response.status == 200 || response.data.error) {
     if (response.data.error) {
       errorMessage(response.data.error);
       return;
     }
-    myTbody.innerHTML = ""; // empty table if anything is in it
-    for (const contact of response.data) {
+    for (const contact of response.data.results) {
       addRow(contact);
     }
   } else {
@@ -78,7 +78,7 @@ async function searchContacts(event) {
   }
 
   const response = await apiRequest("/LAMPAPI/" + path + ".php", data, "POST");
-  if (response == 200) {
+  if (response.status == 200) {
     if (response.data.error) {
       errorMessage(response.data.error);
       return;
