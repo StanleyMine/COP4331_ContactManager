@@ -4,8 +4,6 @@ document
 
 document.getElementById("logout-button").addEventListener("click", logout);
 
-document.addEventListener("load", fillTable);
-
 document
   .getElementById("delete-account-button")
   .addEventListener("click", deleteAccountRequest);
@@ -19,6 +17,8 @@ let lastLog = document.cookie
   .split("; ")
   .find((row) => row.startsWith("lastLog"))
   .split("=")[1];
+
+fillTable();
 
 function logout() {
   var expires = "expires=" + d.toUTCString();
@@ -36,8 +36,7 @@ function logout() {
 async function fillTable() {
   const myTbody = document.getElementById("tableTbody");
   const mySpan = document.getElementById("welcome-span");
-  mySpan.innerText =
-    "Welcome, it has been " + lastLog + " days since you last logged on.";
+  mySpan.innerText = "Welcome, " + lastLog;
   const response = await apiRequest(
     "/LAMPAPI/read_contacts.php",
     { id },
@@ -57,7 +56,8 @@ async function fillTable() {
   }
 }
 
-async function searchContacts() {
+async function searchContacts(event) {
+  event.preventDefault();
   const searchType = document.getElementById("select-search").value;
   const searchCriteria = document.getElementById("search-input").value;
   const myTbody = document.getElementById("tableTbody");
