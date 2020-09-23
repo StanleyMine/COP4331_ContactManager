@@ -112,13 +112,23 @@ function addRow(dataRow) {
   deleteCell.innerText = "🗑️";
   deleteCell.addEventListener("click", async () => {
     if (confirm("Delete Contact Confirmation")) {
-      const succeeded = await deleteRowRequest(dataRow.phoneNumber);
+      const succeeded = await deleteRowRequest(dataRow.id);
       if (succeeded) {
         row.remove();
       }
     }
   });
+  const editCell = document.createElement("td");
+  const link = document.createElement("a");
+  link.innerText = "🖋";
+  const hrefData = JSON.stringify(dataRow);
+  link.href = "/addContact.html?data=${encodeURIComponent(hrefData)}";
+  // add function call here?
+  editCell.appendChild(link);
+
+  // append to row and table
   row.appendChild(deleteCell);
+  row.appendChild(editCell);
   myTable.appendChild(row);
 }
 
