@@ -6,6 +6,11 @@ document.getElementById("logout-button").addEventListener("click", logout);
 
 document.addEventListener("load", fillTable);
 
+document
+  .getElementById("delete-account-button")
+  .addEventListener("click", deleteAccountRequest);
+
+// getting cookies
 let id = document.cookie
   .split("; ")
   .find((row) => row.startsWith("id"))
@@ -25,7 +30,7 @@ function logout() {
     "lastLog=" +
     response.data.lastLog +
     "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-  window.location.replace(".");
+  window.location.replace("."); // clear cookies and replace
 }
 
 async function fillTable() {
@@ -43,7 +48,7 @@ async function fillTable() {
       errorMessage(response.data.error);
       return;
     }
-    myTbody.innerHTML = "";
+    myTbody.innerHTML = ""; // empty table if anything is in it
     for (const contact of response.data) {
       addRow(contact);
     }
@@ -87,7 +92,7 @@ async function searchContacts() {
   }
 }
 
-function addRow(dataRow) {
+async function addRow(dataRow) {
   const myTable = document
     .getElementById("contact-table")
     .getElementsByTagName("tbody")[0];
@@ -102,7 +107,6 @@ function addRow(dataRow) {
   ];
   // loop through dataRow and add to row
   for (const columnKey of columnKeys) {
-    // not convinced this works
     const rowCell = document.createElement("td");
     rowCell.innerText = dataRow[columnKey];
     row.appendChild(rowCell);
@@ -122,8 +126,7 @@ function addRow(dataRow) {
   const link = document.createElement("a");
   link.innerText = "🖋";
   const hrefData = JSON.stringify(dataRow);
-  link.href = "/addContact.html?data=${encodeURIComponent(hrefData)}";
-  // add function call here?
+  link.href = `/addContact.html?data=${encodeURIComponent(hrefData)}`;
   editCell.appendChild(link);
 
   // append to row and table
@@ -134,7 +137,7 @@ function addRow(dataRow) {
 
 async function deleteRowRequest(phoneNumber) {
   const response = await apiRequest(
-    "/LAMPAPI/deleteContact.php",
+    "/LAMPAPI/delete_Contact.php",
     { id, phoneNumber },
     "POST"
   );
@@ -147,4 +150,15 @@ async function deleteRowRequest(phoneNumber) {
     return false;
   }
   return true;
+}
+
+async function deleteAccountRequest() {
+  if (!confirm("Are you sure you want to delete your account?")) {
+    return;
+  }
+  const response = await apiRequest(
+    "/LAMPAPI/delete_Account.php",
+    { id },
+    "POST"
+  );
 }
