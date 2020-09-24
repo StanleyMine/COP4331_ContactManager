@@ -21,15 +21,12 @@ let lastLog = document.cookie
 fillTable();
 
 function logout() {
+  var d = new Date();
   var expires = "expires=" + d.toUTCString();
   document.cookie =
-    "id=" +
-    response.data.id +
-    "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    "id=" + id + "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
   document.cookie =
-    "lastLog=" +
-    response.data.lastLog +
-    "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    "lastLog=" + lastLog + "; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
   window.location.replace("."); // clear cookies and replace
 }
 
@@ -84,7 +81,7 @@ async function searchContacts(event) {
       return;
     }
     myTbody.innerHTML = "";
-    for (const contact of response.data) {
+    for (const contact of response.data.results) {
       addRow(contact);
     }
   } else {

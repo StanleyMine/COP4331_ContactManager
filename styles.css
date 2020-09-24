@@ -168,6 +168,7 @@ input[type="submit"] {
 .border-draw {
   margin: 8px;
   display: inline-block;
+  text-overflow: ellipsis;
   align-items: center;
   justify-content: center;
 }
@@ -181,18 +182,19 @@ input[type="submit"] {
 }
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 25%;
 }
 th {
   border: 1px solid #dddddd;
   color: white;
   text-align: left;
-  padding: 8px 80px 8px 8px;
+  padding: 8px 8px 8px 8px;
 }
 td {
   border: 1px solid #dddddd;
+  text-overflow: ellipsis;
   text-align: left;
-  padding: 8px 80px 8px 8px;
+  padding: 8px 8px 8px 8px;
 }
 tr {
   height: 35px;
@@ -203,6 +205,7 @@ tr:nth-child(odd) {
 }
 #contact-table {
   padding: 24px 0px 0px 0px;
+  font-size: 4px;
   background-color: white;
   display: inline-block;
 }
