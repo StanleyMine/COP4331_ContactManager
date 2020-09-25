@@ -113,10 +113,8 @@ async function addRow(dataRow) {
   deleteCell.innerText = "🗑️";
   deleteCell.addEventListener("click", async () => {
     if (confirm("Delete Contact Confirmation")) {
-      const succeeded = await deleteRowRequest(dataRow.id);
-      if (succeeded) {
-        row.remove();
-      }
+      const response = await deleteRowRequest(dataRow["contactID"]);
+      fillTable();
     }
   });
   const editCell = document.createElement("td");
@@ -132,10 +130,10 @@ async function addRow(dataRow) {
   myTable.appendChild(row);
 }
 
-async function deleteRowRequest(phoneNumber) {
+async function deleteRowRequest(contactID) {
   const response = await apiRequest(
-    "/LAMPAPI/delete_Contact.php",
-    { id, phoneNumber },
+    "/LAMPAPI/delete_contact.php",
+    { id, contactID },
     "POST"
   );
 
@@ -143,7 +141,8 @@ async function deleteRowRequest(phoneNumber) {
     errorMessage("Something went wrong, try again later.");
     return false;
   } else if (response.data.error) {
-    errorMessage(response.data.error);
+    // this will always trigger
+    errorMessage(response.data.error); // because they return an error
     return false;
   }
   return true;
@@ -154,8 +153,14 @@ async function deleteAccountRequest() {
     return;
   }
   const response = await apiRequest(
-    "/LAMPAPI/delete_Account.php",
+    "/LAMPAPI/delete_account.php",
     { id },
     "POST"
   );
+
+  if (response.status == 200) {
+    logout();
+  } else {
+    document.getElementById("createError").innerText = response.data;
+  }
 }
