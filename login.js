@@ -2,8 +2,8 @@ document.getElementById("login-form").addEventListener("submit", login);
 
 async function login(event) {
   event.preventDefault();
-  const Username = document.getElementById("username").value;
-  const Password = document.getElementById("password").value;
+  let Username = document.getElementById("username").value;
+  let Password = document.getElementById("password").value;
 
   if (!Username) {
     // checking "", blank, null, 0, false
@@ -25,7 +25,7 @@ async function login(event) {
     return;
   }
 
-  Password = md5(Password);
+  Password = MD5(Password);
 
   const response = await apiRequest(
     "/LAMPAPI/login.php",
@@ -47,7 +47,7 @@ async function login(event) {
     var expires = "expires=" + d.toUTCString();
     document.cookie = "id=" + response.data.id + ";" + expires + "; path=/";
     document.cookie =
-      "id=" + response.data.lastLog + ";" + expires + "; path=/";
+      "lastLog=" + response.data.lastLog + ";" + expires + "; path=/";
     window.location.replace("contactManager.html");
   } else {
     document.getElementById("error").innerText = response.data;
