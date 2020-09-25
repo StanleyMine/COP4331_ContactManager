@@ -48,11 +48,11 @@ a:active {
 .centerdiv {
   display: flex;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
 }
 .container {
   padding: 56px;
+  margin: auto;
   text-align: center;
   display: inline-flex;
   background-color: rgb(67, 159, 189);
@@ -194,7 +194,6 @@ input[type="button"] {
 }
 table {
   border-collapse: collapse;
-  margin: auto;
   width: 100%;
 }
 th {
