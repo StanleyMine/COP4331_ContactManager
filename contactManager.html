@@ -110,7 +110,7 @@ async function addRow(dataRow) {
     
     if (columnKey == "projectLink") {
         const link = document.createElement("a");
-        link.setAttribute("href", dataRow[columnKey]);
+        link.href = dataRow[columnKey];
         link.innerText = dataRow[columnKey]; // <td><a href = data[columnKey]>data[columnKey]</a></td>
         
         rowCell.appendChild(link);
@@ -119,7 +119,7 @@ async function addRow(dataRow) {
     
     else if (columnKey =="email"){
         const link = document.createElement("a");
-        link.setAttribute("href", "mailto:" + dataRow[columnKey]);
+        link.href = "mailto:" + dataRow[columnKey];
         link.innerText = dataRow[columnKey];
         
         rowCell.appendChild(link);
