@@ -1,3 +1,13 @@
+// getting cookies
+let id = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("id"))
+  .split("=")[1];
+let lastLog = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("lastLog"))
+  .split("=")[1];
+
 document
   .getElementById("search-form")
   .addEventListener("submit", searchContacts);
@@ -8,15 +18,7 @@ document
   .getElementById("delete-account-button")
   .addEventListener("click", deleteAccountRequest);
 
-// getting cookies
-let id = document.cookie
-  .split("; ")
-  .find((row) => row.startsWith("id"))
-  .split("=")[1];
-let lastLog = document.cookie
-  .split("; ")
-  .find((row) => row.startsWith("lastLog"))
-  .split("=")[1];
+document.getElementById("home-button").addEventListener("click", fillTable);
 
 fillTable();
 
