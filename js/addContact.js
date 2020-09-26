@@ -1,102 +1,137 @@
-let id = document.cookie
-  .split("; ")
-  .find((row) => row.startsWith("id"))
-  .split("=")[1];
+let id = document.cookie.split("; ").find(row => row.startsWith("id")).split("=")[1];
 
-document
-  .querySelector("input[type='submit']")
-  .addEventListener("submit", addContact);
+document.querySelector("#add-contact-form").addEventListener("submit", addContact);
 
-async function addContact(event) {
-  event.preventDefault();
+async function addContact(event)
+{
+    event.preventDefault();
+    
+    let firstName = document.querySelector("#firstName").value;
+    let lastName = document.querySelector("#lastName").value;
+    let fullName = document.querySelector("#firstName").value + " " + document.querySelector("#lastName").value;
 
-  alert("why are we still here?");
+    let email = document.querySelector("#email").value;
+    let phoneNumber = document.querySelector("#phone").value;
+    let skills = document.querySelector("#skill").value;
+    let projectLink = document.querySelector("#projectLink").value;
+    
+    
+    // Field Length constants. Don't use magic numbers.
+    const FNLEN = 50, LNLEN = 50, EMAILLEN = 100, PHONELEN = 20, SKILLLEN = 100, PROJECTLEN = 100;
+    
+    const CHARLIMITMSG = "character limit: ";
 
-  let firstName = document.querySelector("#firstName");
-  let lastName = document.querySelector("#lastName");
-  let fullName =
-    document.querySelector("#firstName") +
-    " " +
-    document.querySelector("#lastName");
-
-  let email = document.querySelector("#email");
-  let phone = document.querySelector("#phone");
-  let skill = document.querySelector("#skill");
-  let projectLink = document.querySelector("#projectLink");
-
-  if (!firstName) {
-    document.getElementById("error").innerText =
-      "Please enter a valid first name";
-    return;
-  }
-
-  if (!lastName) {
-    document.getElementById("error").innerText =
-      "Please enter a valid last name";
-    return;
-  }
-
-  if (!email) {
-    document.getElementById("error").innerText = "Please enter a valid email";
-    return;
-  }
-
-  if (!phone) {
-    document.getElementById("error").innerText =
-      "Please enter a valid phone number";
-    return;
-  }
-
-  if (!skill) {
-    document.getElementById("error").innerText =
-      "Please enter a valid skill set";
-    return;
-  }
-
-  if (!projectLink) {
-    document.getElementbyId("error").innerText =
-      "Please enter a valid project link";
-    return;
-  }
-
-  const response = await apiRequest(
-    "/LAMPAPI/add_contact.php",
+    if (!firstName)
     {
-      id,
-      fullName,
-      email,
-      phone,
-      skill,
-      projectLink,
-    },
-    "POST"
-  );
-
-  if (response.status == 200) {
-    if (response.data.error) {
-      document.getElementById("error").innerText = response.data.error;
-      return;
+        document.getElementById("error").innerText = "Please enter a valid first name";
+        return;
+    }
+    
+    if (firstName.length > FNLEN)
+    {
+        document.getElementById("error").innerText = "First name " + CHARLIMITMSG + FNLEN;
+        return;
+    }
+    
+    if (!lastName)
+    {
+        document.getElementById("error").innerText = "Please enter a valid last name";
+        return;
+    }
+    
+    if (lastName.length > LNLEN)
+    {
+        document.getElementById("error").innerText = "Last name " + CHARLIMITMSG + LNLEN;
+        return;
+    }
+    
+    if (!email)
+    {
+        document.getElementById("error").innerText = "Please enter a valid email";
+        return;
+    }
+    
+    if (email.length > EMAILLEN)
+    {
+        document.getElementById("error").innerText = "Email " + CHARLIMITMSG + EMAILLEN;
+        return;
     }
 
-    // fullName.innerText = "";
-    // email.innerText = "";
-    // phone.innerText = "";
-    // skill.innerText = "";
-    // projectLink.innerText = "";
+    if (!phoneNumber)
+    {
+        document.getElementById("error").innerText = "Please enter a valid phone number";
+        return;
+    }
+    
+    if (phoneNumber.length > PHONELEN)
+    {
+        document.getElementById("error").innerText = "Phone number " + CHARLIMITMSG + PHONELEN;
+        return;
+    }
 
-    document.getElementById("success").innerText = response.data;
-  } else {
-    document.getElementById("error").innerText = response.data;
-  }
+    if (!skills)
+    {
+        document.getElementById("error").innerText = "Please enter a valid skill set";
+        return;
+    }
+    
+    if (skills.length > SKILLLEN)
+    {
+        document.getElementById("error").innerText = "Skillset " + CHARLIMITMSG + SKILLLEN;
+        return;
+    }
+
+    if (!projectLink)
+    {
+        document.getElementById("error").innerText = "Please enter a valid project link";
+        return;
+    }
+    
+    if (projectLink.length > PROJECTLEN)
+    {
+        document.getElementById("error").innerText = "Project link " + CHARLIMITMSG + PROJECTLEN;
+        return;
+    }
+    
+    const response = await apiRequest(
+        "/LAMPAPI/add_contact.php",
+        {
+            id,
+            fullName,
+            email,
+            phoneNumber,
+            skills,
+            projectLink
+        },
+        "POST"
+    );
+
+    if (response.status == 200)
+    {
+        if (response.data.error)
+        {
+            document.getElementById("error").innerText = response.data.error;
+            return;
+        }
+        
+        fullName.innerText = "";
+        email.innerText = "";
+        phoneNumber.innerText = "";
+        skills.innerText = "";
+        projectLink.innerText = "";
+
+        document.getElementById("success").innerText = response.data;
+    }
+    else
+    {
+        document.getElementById("error").innerText = response.data;
+    }
 }
 
-// what if someone clicks both add contact and contact manager?
+document.querySelector("input[type='button']").addEventListener("click", toContactManager);
 
-document
-  .querySelector("input[type='button']")
-  .addEventListener("click", toContactManager);
-
-function toContactManager(event) {
-  event.preventDefault();
-  window.location.href = "contactManager.html";
+function toContactManager(event)
+{
+    event.preventDefault();
+    window.location.href = "contactManager.html";
 }
