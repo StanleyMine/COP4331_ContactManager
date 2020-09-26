@@ -33,11 +33,13 @@ async function createAccount(event) {
   if (response.status == 200) {
     if (response.data.error == "This username is unavailable") {
       document.getElementById("createError").innerText = response.data.error;
+      document.getElementById("createSuccess").innerText = "";
       return;
     }
     document.getElementById("createSuccess").innerText = response.data.error;
     document.getElementById("createError").innerText = "";
   } else {
+    document.getElementById("createSuccess").innerText = "";
     document.getElementById("createError").innerText = response.data;
   }
 }

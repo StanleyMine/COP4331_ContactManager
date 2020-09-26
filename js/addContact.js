@@ -156,11 +156,14 @@ async function addContact(event) {
       projectLink.innerText = "";
       contactID = -1;
       document.getElementById("success").innerText = response.data.error;
+      document.getElementById("error").innerText = "";
       return;
     }
     document.getElementById("error").innerText = response.data.error;
+    document.getElementById("success").innerText = "";
   } else {
     document.getElementById("error").innerText = response.data;
+    document.getElementById("success").innerText = "";
   }
 }
 
