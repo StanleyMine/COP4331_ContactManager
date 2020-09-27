@@ -29,6 +29,9 @@ function checkForEdit() {
   document.getElementById("phone").value = data["phoneNumber"];
   document.getElementById("skill").value = data["skills"];
   document.getElementById("projectLink").value = data["projectLink"];
+  
+  document.querySelector("h1").innerHTML = "Update Contact";
+  document.querySelector("input[type='submit']").value = "Update Contact";
 }
 
 document
@@ -164,6 +167,11 @@ async function addContact(event) {
   } else {
     document.getElementById("error").innerText = response.data;
     document.getElementById("success").innerText = "";
+  }
+  
+  if (flag)
+  {
+      document.querySelector("input[type='submit'").disabled = true;
   }
 }
 
