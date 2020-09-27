@@ -107,14 +107,36 @@ async function addRow(dataRow) {
   // loop through dataRow and add to row
   for (const columnKey of columnKeys) {
     const rowCell = document.createElement("td");
-    rowCell.innerText = dataRow[columnKey];
-    row.appendChild(rowCell);
+    
+    if (columnKey == "projectLink") {
+        const link = document.createElement("a");
+        link.href = dataRow[columnKey];
+        link.innerText = dataRow[columnKey]; // <td><a href = data[columnKey]>data[columnKey]</a></td>
+        
+        rowCell.appendChild(link);
+        row.appendChild(rowCell);
+    }
+    
+    else if (columnKey =="email"){
+        const link = document.createElement("a");
+        link.href = "mailto:" + dataRow[columnKey];
+        link.innerText = dataRow[columnKey];
+        
+        rowCell.appendChild(link);
+        row.appendChild(rowCell);
+    }
+    
+    else{
+        rowCell.innerText = dataRow[columnKey];
+        row.appendChild(rowCell);
+    }
   }
 
   const deleteCell = document.createElement("td");
   deleteCell.innerText = "🗑️";
+  deleteCell.style.cursor = "pointer";
   deleteCell.addEventListener("click", async () => {
-    if (confirm("Delete Contact Confirmation")) {
+    if (confirm("Are you sure you want to delete this contact?")) {
       const response = await deleteRowRequest(dataRow["contactID"]);
       fillTable();
     }
