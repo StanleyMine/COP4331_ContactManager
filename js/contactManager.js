@@ -117,7 +117,7 @@ async function addRow(dataRow) {
         row.appendChild(rowCell);
     }
     
-    else if (columnKey =="email"){
+    else if (columnKey == "email"){
         const link = document.createElement("a");
         link.href = "mailto:" + dataRow[columnKey];
         link.innerText = dataRow[columnKey];
