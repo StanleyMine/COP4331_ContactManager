@@ -1,224 +1,276 @@
 body {
-  background-color: var(--primary-color);
-}
-.floating-error {
-  background: #ff4444;
-  border-radius: 4px;
-  padding: 8px 16px;
-  color: white;
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  animation: 5s fade-in-out;
-  opacity: 0;
-}
-@keyframes fade-in-out {
-  0% {
+    background-color: var(--primary-color);
+  }
+  
+  .lonelygif {
+      overflow: hidden;
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: 7s fade-in-out;
+      width: 480px;
+      height: 270px;
+
+      opacity: 0;
+  }
+  
+  .floating-error {
+    background: #ff4444;
+    border-radius: 4px;
+    padding: 8px 16px;
+    color: white;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    animation: 7s fade-in-out;
+    width: 482px;
     opacity: 0;
   }
-
-  20% {
-    opacity: 1;
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+    }
+  
+    80% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }
+  
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+  
+  * {
+    box-sizing: border-box;
+    font-family: Verdana, "Courier New", Courier, monospace;
+    font-weight: bold;
+    --primary-color: rgb(92, 188, 220);
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover,
+  a:active {
+    text-decoration: underline;
+  }
+  .centerdiv {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container:hover {
+      box-shadow: 0px 0px 15px 7px rgb(19, 145, 135);
+  }
+  
+  .container {
+    
+    animation: fade-in 3s;
+    padding: 56px;
+    margin:auto;
+    text-align: center;
+    display: inline-flex;
+    background-color: rgb(147, 208, 228);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    flex-direction: column;
+  }
+  .labeled-search-input {
+    display: flex;
   }
 
-  80% {
-    opacity: 1;
+  .login-section{
+    margin: 20px;
   }
 
-  100% {
-    opacity: 0;
+  .add-contact-section
+  {
+      margin: 16px;
   }
-}
-* {
-  box-sizing: border-box;
-  font-family: Verdana, "Courier New", Courier, monospace;
-  font-weight: bold;
-  --primary-color: rgb(57, 160, 194);
-}
-a {
-  text-decoration: none;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-.centerdiv {
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-}
-.container {
-  padding: 56px;
-  margin: auto;
-  text-align: center;
-  display: inline-flex;
-  background-color: rgb(147, 208, 228);
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  flex-direction: column;
-}
-.labeled-search-input {
-  display: flex;
-}
 
-.login-section {
-  margin: 16px;
-}
+  #add-contact-form input,
+  #create-account input[type="submit"],
+  #login-form input[type="submit"]{
+    margin: 16px;
+    padding: 11px 16px;
+    min-width: 88px;
+    min-height: 36px;
+    text-align: center;
+  }
+  button,
+  input[type="submit"], input[type="button"]{
+    margin: 2px;
+    padding: 2px 7px;
+    font-size: 16px;
+    min-width: 50px;
+    min-height: 22px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+  }
+  #login-form input[type="submit"]{
+    margin: 16px;
+    padding: 11px 16px;
+    font-size: 20px;
+    min-width: 88px;
+    min-height: 36px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    width: 240px;
+  }
+  #add-contact-form label, #login-form label {
+    margin: auto;
+    display: block;
+  }
+  #add-contact-form, #login-form{
+    margin: auto;
+    font-size: large;
+    font-weight: normal;
+    padding: 0px;
+  }
 
-.add-contact-section {
-  margin: 16px;
-}
-
-#add-contact-form input,
-#create-account input[type="submit"],
-#login-form input[type="submit"] {
-  margin: 16px;
-  padding: 11px 16px;
-  min-width: 88px;
-  min-height: 36px;
-  text-align: center;
-}
-button,
-input[type="submit"],
-input[type="button"] {
-  margin: 2px;
-  padding: 2px 7px;
-  font-size: 16px;
-  min-width: 50px;
-  min-height: 22px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  border-radius: 2px;
-  color: white;
-  background-color: var(--primary-color);
-  border: none;
-}
-#login-form input[type="submit"] {
-  margin: 16px;
-  padding: 11px 16px;
-  font-size: 14px;
-  min-width: 88px;
-  min-height: 36px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  border-radius: 2px;
-  color: white;
-  background-color: var(--primary-color);
-  border: none;
-}
-#add-contact-form label,
-#login-form label {
-  margin: auto;
-  display: block;
-}
-#add-contact-form,
-#login-form {
-  margin: auto;
-  font-size: large;
-  font-weight: normal;
-  padding: 0px;
-}
-
-#error {
-  display: block;
-  color: red;
-  font-weight: bold;
-}
-
-/* Create Account CSS */
-#createAccountLink {
-  margin-top: 24px;
-}
-#create-account {
-  margin: auto;
-  display: block;
-  font-size: large;
-}
-#backToLogin {
-  margin-top: 24px;
-}
-#create-account label {
-  display: block;
-  margin: auto;
-}
-#createError {
-  display: block;
-  color: red;
-}
-#createSuccess {
-  display: block;
-  color: green;
-}
-
-.labeled-search-input input {
-  border: 1px solid grey;
-  outline: 0;
-}
-.labeled-search-input label {
-  background: grey;
-  color: white;
-  padding-left: 4px;
-  padding-right: 4px;
-  font-size: 16px;
-  text-align: center;
-  vertical-align: middle;
-}
-.labeled-search-input:focus-within input {
-  border-color: var(--primary-color);
-}
-.labeled-search-input:focus-within label {
-  background: var(--primary-color);
-}
-
-.border-draw {
-  margin: 8px;
-  display: flex;
-  text-overflow: ellipsis;
-  align-items: center;
-  justify-content: center;
-}
-
-.box {
-  display: flex;
-}
-
-/* Contact Manager CSS */
-#search-form {
-  position: relative;
-  display: inline-flex;
-  margin: 0px 0px 8px 8px;
-  align-content: flex-start;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th {
-  border: 1px solid #dddddd;
-  color: white;
-  text-align: left;
-  padding: 8px 8px 8px 8px;
-}
-td {
-  border: 1px solid #dddddd;
-  text-overflow: ellipsis;
-  text-align: left;
-  padding: 8px 8px 8px 8px;
-}
-tr {
-  height: 35px;
-  white-space: nowrap;
-}
-tr:nth-child(odd) {
-  background-color: rgba(103, 103, 235, 0.527);
-}
-#contact-table {
-  padding: 24px 0px 0px 0px;
-  background-color: white;
-}
-#contact-table th {
-  background-color: grey;
-}
+  #error {
+    display: block;
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Create Account CSS */
+  #createAccountLink {
+    margin-top: 24px;
+  }
+  #create-account {
+    margin: auto;
+    display: block;
+    font-size: large;
+  }
+  #backToLogin {
+    margin-top: 24px;
+  }
+  #create-account label {
+    display: block;
+    margin: auto;
+  }
+  #createError {
+    display: block;
+    color: red;
+  }
+  #createSuccess {
+    display: block;
+    color: green;
+  }
+  
+  .labeled-search-input input {
+    border: 1px solid grey;
+    outline: 0;
+  }
+  .labeled-search-input label {
+    background: grey;
+    color: white;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 16px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .labeled-search-input:focus-within input {
+    border-color: var(--primary-color);
+  }
+  .labeled-search-input:focus-within label {
+    background: var(--primary-color);
+  }
+  
+  .border-draw {
+    margin: 8px;
+    display: flex;
+    text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box
+  {
+    display: flex;
+  }
+  
+  /* Contact Manager CSS */
+  #search-form {
+    position: relative;
+    display: inline-flex;
+    margin: 0px 0px 8px 8px;
+    align-content: flex-start;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th {
+    border: 1px solid #dddddd;
+    color: white;
+    text-align: left;
+    padding: 8px 8px 8px 8px;
+  }
+  td {
+    border: 1px solid #dddddd;
+    text-overflow: ellipsis;
+    text-align: left;
+    padding: 8px 8px 8px 8px;
+  }
+  tr {
+    height: 35px;
+    white-space: nowrap;
+  }
+  tr:nth-child(odd) {
+    background-color: rgba(103, 103, 235, 0.527);
+  }
+  #contact-table {
+    margin-top: 32px;
+    padding: 24px 0px 0px 0px;
+    background-color: white;
+  }
+  #contact-table th {
+    background-color: grey;
+  }
+  
+  #username, #password, input#createuser, input#createpass, input#confpass {
+      font-size: 22px;
+      width: 245px;
+      height: 35px;
+      font-weight: bold;
+  }
+  
+  #create-account label {
+      font-size: 22px;
+  }
+  
+  img {
+      height: 80px;
+  }
+  
+  #contact-table h1 {
+      margin-bottom: 16px;
+  }
+  
+  #contact-table h2 {
+      margin-top: 0px;
+  }
